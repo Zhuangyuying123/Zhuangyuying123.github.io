@@ -1,0 +1,1188 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+
+
+    <link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+
+    <meta name="apple-mobile-web-app-title" content="CodePen">
+
+    <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+
+    <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111" />
+
+
+
+
+    <title>个人简历</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="canonical" href="https://codepen.io/georgedoescode/pen/XWNmvro" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<style>
+:root {
+  --dark-color: hsl(var(--hue), 100%, 9%);
+  --light-color: hsl(var(--hue), 95%, 98%);
+  --base: hsl(var(--hue), 95%, 50%);
+  --complimentary1: hsl(var(--hue-complimentary1), 95%, 50%);
+  --complimentary2: hsl(var(--hue-complimentary2), 95%, 50%);
+
+  --font-family: "Poppins", system-ui;
+
+  --bg-gradient: linear-gradient(
+    to bottom,
+    hsl(var(--hue), 95%, 99%),
+    hsl(var(--hue), 95%, 84%)
+  );
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  max-width: 1920px;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  font-family: var(--font-family);
+  color: var(--dark-color);
+  background: var(--bg-gradient);
+}
+
+.orb-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+strong {
+  font-weight: 600;
+}
+
+.overlay {
+  width: 100%;
+  max-width: 1140px;
+  padding: 8rem 6rem;
+  display: flex;
+  margin-bottom: 2rem;
+    margin-top: 2rem;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 0.75rem 2rem 0 rgba(0, 0, 0, 0.1);
+  border-radius: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+.overlay__inner {
+width: 100%;
+}
+
+.overlay__title {
+  font-size: 5rem;
+  line-height: 5rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  margin-bottom: 2rem;
+}
+
+.text-gradient {
+  background-image: linear-gradient(
+    45deg,
+    var(--base) 25%,
+    var(--complimentary2)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+}
+
+.overlay__description {
+  font-size: 1rem;
+  line-height: 1.75rem;
+  margin-bottom: 3rem;
+}
+
+.overlay__btns {
+  width: 100%;
+  max-width: 30rem;
+  display: flex;
+}
+
+.overlay__btn {
+  width: 50%;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--light-color);
+  background: var(--dark-color);
+  border: none;
+  border-radius: 0.5rem;
+  transition: transform 150ms ease;
+  outline-color: hsl(var(--hue), 95%, 50%);
+}
+
+.overlay__btn:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.overlay__btn--transparent {
+  background: transparent;
+  color: var(--dark-color);
+  border: 2px solid var(--dark-color);
+  border-width: 2px;
+  margin-right: 0.75rem;
+}
+
+.overlay__btn-emoji {
+  margin-left: 0.375rem;
+}
+
+a {
+  text-decoration: none;
+  color: var(--dark-color);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Not too many browser support this yet but it's good to add! */
+@media (prefers-contrast: high) {
+  .orb-canvas {
+    display: none;
+  }
+  .overlay__title {
+    font-size: 5rem;
+    line-height:53rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 1140px) {
+  .overlay {
+    padding: 8rem 4rem;
+  }
+  .overlay__title {
+    font-size: 5rem;
+    line-height: 5rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 840px) {
+  body {
+    padding: 1.5rem;
+  }
+
+  .overlay {
+    padding: 4rem;
+    height: auto;
+  }
+
+}
+
+@media only screen and (max-width: 600px) {
+  .overlay {
+    padding: 1.5rem;
+  }
+
+  .overlay__btns {
+    flex-wrap: wrap;
+  }
+  .overlay__btn {
+    width: 100%;
+    font-size: 0.75rem;
+    margin-right: 0;
+  }
+
+  .overlay__btn:first-child {
+    margin-bottom: 1rem;
+  }
+}
+.navbar {
+  max-width: 1000px; /* 设置导航栏的最大宽度 */
+  margin: 0 auto; /* 水平居中导航栏 */
+}
+.navbar-brand,
+.navbar-nav .nav-link {
+  white-space: nowrap;
+}
+.table tr {
+  width: 40%;
+}
+
+.table tr td{
+  width: 100rem;
+}
+.custom-table {
+  white-space: nowrap;
+}
+.card{
+  background: rgba(255, 255, 255, 0.375);
+  height:350px;
+}
+.btn{
+  background: rgba(255, 255, 255, 0.375);
+  height:2rem
+}
+/* 选择器 */
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.column {
+  width: 50%;
+}
+
+.clear {
+  clear: both;
+}
+
+.contact-info h3,
+.social-media h3 {
+  color: #333;
+}
+
+.contact-info p {
+  margin-bottom: 10px;
+}
+
+.social-media ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.social-media li {
+  margin-bottom: 5px;
+}
+
+.social-media a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.social-media a:hover {
+  text-decoration: underline;
+}
+
+/* 版权信息样式 */
+.footer-copyright {
+  text-align: center;
+  margin-top: 20px;
+  color: #666;
+  font-size: 14px;
+}
+.footer {
+  background-color: #fff;
+  bottom: 0;
+   left: 0;
+  margin-bottom: 0;
+   position:sticky;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.overlay2 {
+  position: fixed;
+  top: 20%;
+  left: 0;
+  width: 100%;
+  height: 90%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 10px;
+  z-index: 9999;
+}
+
+.overlay2 iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.overlay-close {
+  color: #fff;
+  font-size: 24px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.overlay-close:hover {
+  opacity: 0.8;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin: 4rem 5vw;
+  padding: 0;
+  list-style-type: none;
+}
+
+.card2 {
+  position: relative;
+  display: block;
+  height: 100%;
+  border-radius: calc(var(--curve) * 1px);
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.card2__image {
+  width: 100%;
+  height: auto;
+}
+
+.card2__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  border-radius: calc(var(--curve) * 1px);
+  background-color: var(--surface-color);
+  transform: translateY(100%);
+  transition: .2s ease-in-out
+}
+
+.card2:hover .card2__overlay {
+  transform: translateY(0);
+}
+
+.card2__header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  padding: 2em;
+  border-radius: calc(var(--hue) * 1px) 0 0 0;
+  background-color: var(--surface-color);
+  transform: translateY(-100%);
+  transition: .2s ease-in-out;
+}
+
+.card2__arc {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  z-index: 1;
+}
+
+
+
+.card2:hover .card2__header {
+  transform: translateY(0);
+}
+
+.card2__thumb {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.card2__title {
+  font-size: 1em;
+  margin: 0 0 .3em;
+  color: #6A515E;
+}
+
+.card2__tagline {
+  display: block;
+  margin: 1em 0;
+  font-family: "MockFlowFont";
+  font-size: .8em;
+  color: var(--dark-color);
+}
+
+.card2__status {
+  font-size: .8em;
+  color: #D7BDCA;
+}
+
+.card2__description {
+  padding: 0 2em 2em;
+  margin: 0;
+  color: var(--dark-color);
+
+}
+
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+
+
+</head>
+
+<body translate="no">
+  <!--导航-->
+  <nav class="navbar navbar-expand-lg fixed-top" style="background-color:rgba(255, 255, 255, 0.375);">
+<div class="container-fluid">
+  <a class="navbar-brand" href="https://zhuangyuying123.github.io/Personal%20Website">Zhuang Yuying's resume</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="https://zhuangyuying123.github.io/Personal%20Website/web1">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="https://zhuangyuying123.github.io/Personal%20Website/model/model.html">3D model</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="https://zhuangyuying123.github.io/Personal%20Website/inter/inter.html">interactive design</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Marketing Planning
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="https://zhuangyuying123.github.io/Personal%20Website/Case/casepage1.html">Team work</a></li>
+          <li><a class="dropdown-item" href="https://zhuangyuying123.github.io/Personal%20Website/Case/casepage2.html">Personal work</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</nav>
+
+  <!-- Canvas -->
+<canvas class="orb-canvas"></canvas>
+<!-- Overlay -->
+<div class="overlay">
+  <!-- Overlay inner wrapper -->
+  <div class="overlay__inner">
+
+    <div class="d-flex position-relative">
+      <img src="https://zhuangyuying123.github.io/Personal%20Website/photo/%E5%9B%BE%E7%89%8722.png" class="flex-shrink-0 me-3" alt="">
+      <div>
+        <h5 class="mt-0" style="text-align: center;">Essential information</h5>
+        <table class="table custom-table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col"></th>
+      <th scope="col">Zhuangyuying</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Year of birth</td>
+      <td >:</td>
+      <td >2003.07</td>
+    </tr>
+    <tr>
+      <td>Nationality</td>
+      <td >:</td>
+      <td>Han</td>
+    </tr>
+    <tr>
+      <td>Telephone</td>
+      <td >:</td>
+      <td>18845840369</td>
+    </tr>
+    <tr>
+      <td>Mailbox</td>
+      <td >:</td>
+      <td>2021218033012@cuc.edu.cn</td>
+    </tr>
+    <tr>
+      <td>Address</td>
+      <td >:</td>
+      <td>Beijing</td>
+    </tr>
+    <tr>
+      <td>College</td>
+      <td > : </td>
+      <td>Communication University of China(CUC)</td>
+    </tr>
+    <tr>
+      <td>Major</td>
+      <td > : </td>
+      <td>Advertising (Digital marketing)</td>
+    </tr>
+  </tbody>
+</table>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+<!-- Overlay -->
+<div class="overlay">
+  <!-- Overlay inner wrapper -->
+  <div class="overlay__inner">
+        <h5 class="mt-0" style="text-align: center;">Interactive Design</h5>
+        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="10000">
+              <a href="https://zhuangyuying123.github.io/Personal%20Website/Interactive/inter1.html">
+                <img src="https://zhuangyuying123.github.io/Personal%20Website/inter/%E5%9B%BE%E7%89%8713.png" class="card-img" alt="...">
+</a>
+            </div>
+            <div class="carousel-item" data-bs-interval="2000">
+              <a href="https://zhuangyuying123.github.io/Personal%20Website/Interactive/inter2.html">
+  <img src="https://zhuangyuying123.github.io/Personal%20Website/inter/%E5%9B%BE%E7%89%8714.png" class="card-img" alt="...">
+</a>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+
+  </div>
+</div>
+
+<!-- Overlay -->
+<div class="overlay">
+  <!-- Overlay inner wrapper -->
+  <div class="overlay__inner">
+      <h5 class="mt-0" style="text-align: center;">3D Model</h5>
+    <ul class="cards">
+    <li>
+      <a href="https://zhuangyuying123.github.io/Personal%20Website/model/model1/index.html" class="card2">
+        <img src="https://zhuangyuying123.github.io/Personal%20Website/gif/gif5.gif" class="card2__image" alt="" />
+        <div class="card2__overlay">
+          <div class="card2__header">
+            <svg class="card2__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
+            <div class="card2__header-text">
+              <h3 class="card2__title">Angle</h3>
+              <span class="card2__status">2023.5</span>
+            </div>
+          </div>
+          <p class="card2__description">Meeting an angel is a wonderful moment of encountering the divine.</p>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="https://zhuangyuying123.github.io/Personal%20Website/model/model3/index.html" class="card2">
+        <img src="https://zhuangyuying123.github.io/Personal%20Website/gif/gif3.gif" class="card2__image" alt="" />
+        <div class="card2__overlay">
+          <div class="card2__header">
+            <svg class="card2__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
+
+            <div class="card2__header-text">
+              <h3 class="card2__title">Lollipop</h3>
+              <span class="card2__status">2023.5</span>
+            </div>
+          </div>
+          <p class="card2__description">Life is like a lollipop, savor each moment before it melts away.</p>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="https://zhuangyuying123.github.io/Personal%20Website/model/model8/index.html" class="card2">
+        <img src="https://zhuangyuying123.github.io/Personal%20Website/gif/gif2.gif" class="card2__image" alt="" />
+        <div class="card2__overlay">
+          <div class="card2__header">
+            <svg class="card2__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
+            <div class="card2__header-text">
+              <h3 class="card2__title">Blue Planet</h3>
+              <span class="card2__status">2023.5</span>
+            </div>
+          </div>
+          <p class="card2__description">In the vast and boundless universe, there is always your tiny little planet.</p>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="https://zhuangyuying123.github.io/Personal%20Website/model/model7/index.html" class="card2">
+        <img src="https://zhuangyuying123.github.io/Personal%20Website/gif/gif6.gif" class="card2__image" alt="" />
+        <div class="card2__overlay">
+          <div class="card2__header">
+            <svg class="card2__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
+            <div class="card2__header-text">
+              <h3 class="card2__title">Cheese</h3>
+              <span class="card2__status">2023.5</span>
+            </div>
+          </div>
+          <p class="card2__description">Cheese is the poetry of milk.</p>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="https://zhuangyuying123.github.io/Personal%20Website/model/model9/index.html" class="card2">
+        <img src="https://zhuangyuying123.github.io/Personal%20Website/gif/gif4.gif" class="card2__image" alt="" />
+        <div class="card2__overlay">
+          <div class="card2__header">
+            <svg class="card2__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
+            <div class="card2__header-text">
+              <h3 class="card2__title">Sunflowers</h3>
+              <span class="card2__status">2023.5</span>
+            </div>
+          </div>
+          <p class="card2__description">Sunflowers teach us to always seek the light, even on the darkest days.</p>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="https://zhuangyuying123.github.io/Personal%20Website/model/model5/index.html" class="card2">
+        <img src="https://zhuangyuying123.github.io/Personal%20Website/gif/gif7.gif" class="card2__image" alt="" />
+        <div class="card2__overlay">
+          <div class="card2__header">
+            <svg class="card2__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
+            <div class="card2__header-text">
+              <h3 class="card2__title">Donut</h3>
+              <span class="card2__status">2023.5</span>
+            </div>
+          </div>
+          <p class="card2__description">Life is like a donut, it's the empty space in the middle that gives it meaning.</p>
+        </div>
+      </a>
+    </li>
+  </ul>
+  </div>
+</div>
+
+<!-- Overlay -->
+<div class="overlay">
+  <!-- Overlay inner wrapper -->
+  <div class="overlay__inner">
+
+    <div class="d-flex position-relative">
+      <img src="" class="flex-shrink-0 me-3" alt="">
+    </div>
+    <h5 class="mt-0" style="text-align: center;">Marketing Plan</h5>
+          <a href="important2.html" class="btn btn-light">Team work→</a>
+        <div class="row">
+
+            <div class="card col-md-4 mb-2">
+                <img src="https://zhuangyuying123.github.io/Personal%20Website/photo/%E5%9B%BE%E7%89%871.png" class="card-img-top" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">Animation preference survey report of post-00s college students</h5>
+                      <h3>
+                    <a href="https://zhuangyuying123.github.io/Personal%20Website/Case/case1/page1-1" class="btn btn-light">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-ppt" viewBox="0 0 16 16">
+  <path d="M7 5.5a1 1 0 0 0-1 1V13a.5.5 0 0 0 1 0v-2h1.188a2.75 2.75 0 0 0 0-5.5H7zM8.188 10H7V6.5h1.188a1.75 1.75 0 1 1 0 3.5z"/>
+  <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+</svg>  PPT</a>
+                  </h3>
+
+                </div>
+
+            </div>
+            <div class="card col-md-4 mb-2">
+                <img src="https://zhuangyuying123.github.io/Personal%20Website/photo/%E5%9B%BE%E7%89%872.png" class="card-img-top" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">A Brief analysis of how to build Internet celebrity Attractions in the era of intelligent media</h5>
+                      <h3>
+                    <a href="https://zhuangyuying123.github.io/Personal%20Website/Case/case2/page2-1" class="btn btn-light">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-ppt" viewBox="0 0 16 16">
+  <path d="M7 5.5a1 1 0 0 0-1 1V13a.5.5 0 0 0 1 0v-2h1.188a2.75 2.75 0 0 0 0-5.5H7zM8.188 10H7V6.5h1.188a1.75 1.75 0 1 1 0 3.5z"/>
+  <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+</svg>  PPT</a>
+                  </h3>
+
+                </div>
+            </div>
+            <div class="card col-md-4 mb-2">
+                <img src="https://zhuangyuying123.github.io/Personal%20Website/photo/%E5%9B%BE%E7%89%876.png" class="card-img-top" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">Animation preference survey report of post-00s college students</h5>
+                      <h3>
+                    <a href="https://zhuangyuying123.github.io/Personal%20Website/Case/case6/page6-1" class="btn btn-light">                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-ppt" viewBox="0 0 16 16">
+                      <path d="M7 5.5a1 1 0 0 0-1 1V13a.5.5 0 0 0 1 0v-2h1.188a2.75 2.75 0 0 0 0-5.5H7zM8.188 10H7V6.5h1.188a1.75 1.75 0 1 1 0 3.5z"/>
+                      <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+                    </svg>  PPT</a>
+                  </h3>
+
+                </div>
+            </div>
+            <div class="card col-md-4 mb-2">
+                <img src="https://zhuangyuying123.github.io/Personal%20Website/photo/%E5%9B%BE%E7%89%874.png" class="card-img-top" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">Animation preference survey report of post-00s college students</h5>
+                      <h3>
+                    <a href="https://zhuangyuying123.github.io/Personal%20Website/Case/case4/page4" class="btn btn-light">                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-ppt" viewBox="0 0 16 16">
+                      <path d="M7 5.5a1 1 0 0 0-1 1V13a.5.5 0 0 0 1 0v-2h1.188a2.75 2.75 0 0 0 0-5.5H7zM8.188 10H7V6.5h1.188a1.75 1.75 0 1 1 0 3.5z"/>
+                      <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+                    </svg>  PPT</a>
+                  </h3>
+                </div>
+            </div>
+            <div class="card col-md-4 mb-2">
+                <img src="https://zhuangyuying123.github.io/Personal%20Website/photo/%E5%9B%BE%E7%89%875.png" class="card-img-top" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">Animation preference survey report of post-00s college students</h5>
+                      <h3>
+                    <a href="https://zhuangyuying123.github.io/Personal%20Website/Case/case5/page5" class="btn btn-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-word" viewBox="0 0 16 16">
+                      <path d="M7 5.5a1 1 0 0 0-1 1V13a.5.5 0 0 0 1 0v-2h1.188a2.75 2.75 0 0 0 0-5.5H7zM8.188 10H7V6.5h1.188a1.75 1.75 0 1 1 0 3.5z"/>
+                      <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+                    </svg>  PPT</a>
+                  </h3>
+                </div>
+            </div>
+            <div class="card col-md-4 mb-2">
+                <img src="https://zhuangyuying123.github.io/Personal%20Website/photo/%E5%9B%BE%E7%89%873.png" class="card-img-top" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">Animation preference survey report of post-00s college students</h5>
+                      <h3>
+                    <a href="https://zhuangyuying123.github.io/Personal%20Website/Case/case3/page3" class="btn btn-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-word" viewBox="0 0 16 16">
+  <path d="M5.485 6.879a.5.5 0 1 0-.97.242l1.5 6a.5.5 0 0 0 .967.01L8 9.402l1.018 3.73a.5.5 0 0 0 .967-.01l1.5-6a.5.5 0 0 0-.97-.242l-1.036 4.144-.997-3.655a.5.5 0 0 0-.964 0l-.997 3.655L5.485 6.88z"/>
+  <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+</svg>  Word</a>
+                  </h3>
+                </div>
+            </div>
+
+
+        </div>
+      </div>
+    </div>
+    <!-- Overlay -->
+    <div class="overlay">
+      <!-- Overlay inner wrapper -->
+      <div class="overlay__inner">
+
+        <div class="d-flex position-relative">
+          <img src="" class="flex-shrink-0 me-3" alt="">
+          <div>
+            <h5 class="mt-0" style="text-align: center;">Marketing Plan</h5>
+                <a href="inportant1.html" class="btn btn-light">Personal work→</a>
+            <div class="row">
+
+                <div class="card col-md-4 mb-2">
+                    <img src="https://zhuangyuying123.github.io/Personal%20Website/photo/%E5%9B%BE%E7%89%878.png" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">Animation preference survey report of post-00s college students</h5>
+                          <h3>
+                        <a href="https://zhuangyuying123.github.io/Personal%20Website/Case/case7/page7" class="btn btn-light">                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-ppt" viewBox="0 0 16 16">
+                          <path d="M7 5.5a1 1 0 0 0-1 1V13a.5.5 0 0 0 1 0v-2h1.188a2.75 2.75 0 0 0 0-5.5H7zM8.188 10H7V6.5h1.188a1.75 1.75 0 1 1 0 3.5z"/>
+                          <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+                        </svg>  PPT</a>
+                      </h3>
+
+                    </div>
+                </div>
+                <div class="card col-md-4 mb-2">
+                    <img src="https://zhuangyuying123.github.io/Personal%20Website/photo/%E5%9B%BE%E7%89%8710.png" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">A Brief analysis of how to build Internet celebrity Attractions in the era of intelligent media</h5>
+                          <h3>
+                        <a href="https://zhuangyuying123.github.io/Personal%20Website/Case/case8/page8" class="btn btn-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-word" viewBox="0 0 16 16">
+  <path d="M5.485 6.879a.5.5 0 1 0-.97.242l1.5 6a.5.5 0 0 0 .967.01L8 9.402l1.018 3.73a.5.5 0 0 0 .967-.01l1.5-6a.5.5 0 0 0-.97-.242l-1.036 4.144-.997-3.655a.5.5 0 0 0-.964 0l-.997 3.655L5.485 6.88z"/>
+  <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+</svg>  Word</a>
+                      </h3>
+                    </div>
+                </div>
+                <div class="card col-md-4 mb-2">
+                    <img src="https://zhuangyuying123.github.io/Personal%20Website/photo/%E5%9B%BE%E7%89%879.png" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">Animation preference survey report of post-00s college students</h5>
+                          <h3>
+                        <a href="https://zhuangyuying123.github.io/Personal%20Website/Case/case9/page9" class="btn btn-light">                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-ppt" viewBox="0 0 16 16">
+                          <path d="M7 5.5a1 1 0 0 0-1 1V13a.5.5 0 0 0 1 0v-2h1.188a2.75 2.75 0 0 0 0-5.5H7zM8.188 10H7V6.5h1.188a1.75 1.75 0 1 1 0 3.5z"/>
+                          <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+                        </svg>  PPT</a>
+                      </h3>
+
+                    </div>
+                </div>
+                <div class="card col-md-4 mb-2">
+                    <img src="https://zhuangyuying123.github.io/Personal%20Website/photo/%E5%9B%BE%E7%89%877.png" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">Animation preference survey report of post-00s college students</h5>
+                          <h3>
+                        <a href="https://zhuangyuying123.github.io/Personal%20Website/Case/case10/page10" class="btn btn-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-word" viewBox="0 0 16 16">
+  <path d="M5.485 6.879a.5.5 0 1 0-.97.242l1.5 6a.5.5 0 0 0 .967.01L8 9.402l1.018 3.73a.5.5 0 0 0 .967-.01l1.5-6a.5.5 0 0 0-.97-.242l-1.036 4.144-.997-3.655a.5.5 0 0 0-.964 0l-.997 3.655L5.485 6.88z"/>
+  <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+</svg>  Word</a>
+                      </h3>
+                    </div>
+                </div>
+                <div class="card col-md-4 mb-2">
+                    <img src="https://zhuangyuying123.github.io/Personal%20Website/photo/%E5%9B%BE%E7%89%8712.png" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">Animation preference survey report of post-00s college students</h5>
+                        <h3>
+                        <a href="https://zhuangyuying123.github.io/Personal%20Website/Case/case11/page11" class="btn btn-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-word" viewBox="0 0 16 16">
+  <path d="M5.485 6.879a.5.5 0 1 0-.97.242l1.5 6a.5.5 0 0 0 .967.01L8 9.402l1.018 3.73a.5.5 0 0 0 .967-.01l1.5-6a.5.5 0 0 0-.97-.242l-1.036 4.144-.997-3.655a.5.5 0 0 0-.964 0l-.997 3.655L5.485 6.88z"/>
+  <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+</svg>  Word</a>
+                      </h3>
+                    </div>
+                </div>
+                <div class="card col-md-4 mb-2">
+                    <img src="https://zhuangyuying123.github.io/Personal%20Website/photo/%E5%9B%BE%E7%89%8711.png" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">Animation preference survey report of post-00s college students</h5>
+                          <h3>
+                        <a href="https://zhuangyuying123.github.io/Personal%20Website/Case/case12/page12" class="btn btn-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-word" viewBox="0 0 16 16">
+  <path d="M5.485 6.879a.5.5 0 1 0-.97.242l1.5 6a.5.5 0 0 0 .967.01L8 9.402l1.018 3.73a.5.5 0 0 0 .967-.01l1.5-6a.5.5 0 0 0-.97-.242l-1.036 4.144-.997-3.655a.5.5 0 0 0-.964 0l-.997 3.655L5.485 6.88z"/>
+  <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+</svg>  Word</a>
+                      </h3>
+                    </div>
+                </div>
+
+            </div>
+          </div>
+        </div>
+  </div>
+    </div>
+
+        <footer>
+    <div class="footer" style="  width: 1150px;">
+  <div class="contact-container" >
+    <div class="column">
+       <div class="contact-info">
+      <h3>contact</h3>
+      <p>Address：Communication University of China, No. 1 Dingfuzhuang East Street, Chaoyang District, Beijing</p>
+      <p>Telephone：18845840369</p>
+      <p>Email：2021218033012@cuc.edu.cn</p>
+  </div>
+    </div>
+    <div class="column">
+      <div class="social-media">
+      <h3>material reference</h3>
+      <ul>
+        <li><a href="https://codepen.io/trending">Codepen</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="copyright">
+  <p>All rights reserved &copy; Zhuang Yuyingyu</p>
+</div>
+</div>
+</footer>
+
+
+
+
+    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+
+
+      <script id="rendered-js" type="module">
+import * as PIXI from "https://cdn.skypack.dev/pixi.js@5.x";
+import { KawaseBlurFilter } from "https://cdn.skypack.dev/@pixi/filter-kawase-blur@3.2.0";
+import SimplexNoise from "https://cdn.skypack.dev/simplex-noise@3.0.0";
+import hsl from "https://cdn.skypack.dev/hsl-to-hex";
+import debounce from "https://cdn.skypack.dev/debounce";
+
+// return a random number within a range
+function random(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+// map a number from 1 range to another
+function map(n, start1, end1, start2, end2) {
+  return (n - start1) / (end1 - start1) * (end2 - start2) + start2;
+}
+
+// Create a new simplex noise instance
+const simplex = new SimplexNoise();
+
+// ColorPalette class
+class ColorPalette {
+  constructor() {
+    this.setColors();
+    this.setCustomProperties();
+  }
+
+  setColors() {
+    // pick a random hue somewhere between 220 and 360
+    this.hue = ~~random(0, 360);
+    this.complimentaryHue1 = this.hue + 30;
+    this.complimentaryHue2 = this.hue + 60;
+    // define a fixed saturation and lightness
+    this.saturation = 40;
+    this.lightness = 90;
+
+    // define a base color
+    this.baseColor = hsl(this.hue, this.saturation, this.lightness);
+    // define a complimentary color, 30 degress away from the base
+    this.complimentaryColor1 = hsl(
+    this.complimentaryHue1,
+    this.saturation,
+    this.lightness);
+
+    // define a second complimentary color, 60 degrees away from the base
+    this.complimentaryColor2 = hsl(
+    this.complimentaryHue2,
+    this.saturation,
+    this.lightness);
+
+
+    // store the color choices in an array so that a random one can be picked later
+    this.colorChoices = [
+    this.baseColor,
+    this.complimentaryColor1,
+    this.complimentaryColor2];
+
+  }
+
+  randomColor() {
+    // pick a random color
+    return this.colorChoices[~~random(0, this.colorChoices.length)].replace(
+    "#",
+    "0x");
+
+  }
+
+  setCustomProperties() {
+    // set CSS custom properties so that the colors defined here can be used throughout the UI
+    document.documentElement.style.setProperty("--hue", this.hue);
+    document.documentElement.style.setProperty(
+    "--hue-complimentary1",
+    this.complimentaryHue1);
+
+    document.documentElement.style.setProperty(
+    "--hue-complimentary2",
+    this.complimentaryHue2);
+
+  }}
+
+
+// Orb class
+class Orb {
+  // Pixi takes hex colors as hexidecimal literals (0x rather than a string with '#')
+  constructor(fill = 0x000000) {
+    // bounds = the area an orb is "allowed" to move within
+    this.bounds = this.setBounds();
+    // initialise the orb's { x, y } values to a random point within it's bounds
+    this.x = random(this.bounds["x"].min, this.bounds["x"].max);
+    this.y = random(this.bounds["y"].min, this.bounds["y"].max);
+
+    // how large the orb is vs it's original radius (this will modulate over time)
+    this.scale = 1;
+
+    // what color is the orb?
+    this.fill = fill;
+
+    // the original radius of the orb, set relative to window height
+    this.radius = random(window.innerHeight / 0.8, window.innerHeight / 0.8);
+
+    // starting points in "time" for the noise/self similar random values
+    this.xOff = random(0, 1000);
+    this.yOff = random(0, 1000);
+    // how quickly the noise/self similar random values step through time
+    this.inc = 0.002;
+
+    // PIXI.Graphics is used to draw 2d primitives (in this case a circle) to the canvas
+    this.graphics = new PIXI.Graphics();
+    this.graphics.alpha = 0.825;
+
+    // 250ms after the last window resize event, recalculate orb positions.
+    window.addEventListener(
+    "resize",
+    debounce(() => {
+      this.bounds = this.setBounds();
+    }, 250));
+
+  }
+
+  setBounds() {
+    // how far from the { x, y } origin can each orb move
+    const maxDist =
+    window.innerWidth < 1000 ? window.innerWidth / 3 : window.innerWidth / 5;
+    // the { x, y } origin for each orb (the bottom right of the screen)
+    const originX = window.innerWidth / 1.25;
+    const originY =
+    window.innerWidth < 1000 ?
+    window.innerHeight :
+    window.innerHeight / 1.375;
+
+    // allow each orb to move x distance away from it's x / y origin
+    return {
+      x: {
+        min: originX - maxDist,
+        max: originX + maxDist },
+
+      y: {
+        min: originY - maxDist,
+        max: originY + maxDist } };
+
+
+  }
+
+  update() {
+    // self similar "psuedo-random" or noise values at a given point in "time"
+    const xNoise = simplex.noise2D(this.xOff, this.xOff);
+    const yNoise = simplex.noise2D(this.yOff, this.yOff);
+    const scaleNoise = simplex.noise2D(this.xOff, this.yOff);
+
+    // map the xNoise/yNoise values (between -1 and 1) to a point within the orb's bounds
+    this.x = map(xNoise, -1, 1, this.bounds["x"].min, this.bounds["x"].max);
+    this.y = map(yNoise, -1, 1, this.bounds["y"].min, this.bounds["y"].max);
+    // map scaleNoise (between -1 and 1) to a scale value somewhere between half of the orb's original size, and 100% of it's original size
+    this.scale = map(scaleNoise, -1, 1, 0.5, 1);
+
+    // step through "time"
+    this.xOff += this.inc;
+    this.yOff += this.inc;
+  }
+
+  render() {
+    // update the PIXI.Graphics position and scale values
+    this.graphics.x = this.x;
+    this.graphics.y = this.y;
+    this.graphics.scale.set(this.scale);
+
+    // clear anything currently drawn to graphics
+    this.graphics.clear();
+
+    // tell graphics to fill any shapes drawn after this with the orb's fill color
+    this.graphics.beginFill(this.fill);
+    // draw a circle at { 0, 0 } with it's size set by this.radius
+    this.graphics.drawCircle(0, 0, this.radius);
+    // let graphics know we won't be filling in any more shapes
+    this.graphics.endFill();
+  }}
+
+
+// Create PixiJS app
+const app = new PIXI.Application({
+  // render to <canvas class="orb-canvas"></canvas>
+  view: document.querySelector(".orb-canvas"),
+  // auto adjust size to fit the current window
+  resizeTo: window,
+  // transparent background, we will be creating a gradient background later using CSS
+  transparent: true });
+
+
+app.stage.filters = [new KawaseBlurFilter(30, 10, true)];
+
+// Create colour palette
+const colorPalette = new ColorPalette();
+
+// Create orbs
+const orbs = [];
+
+for (let i = 0; i < 10; i++) {if (window.CP.shouldStopExecution(0)) break;
+  const orb = new Orb(colorPalette.randomColor());
+
+  app.stage.addChild(orb.graphics);
+
+  orbs.push(orb);
+}
+
+// Animate!
+window.CP.exitedLoop(0);if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  app.ticker.add(() => {
+    orbs.forEach(orb => {
+      orb.update();
+      orb.render();
+    });
+  });
+} else {
+  orbs.forEach(orb => {
+    orb.update();
+    orb.render();
+  });
+}
+
+document.
+querySelector(".overlay__btn--colors").
+addEventListener("click", () => {
+  colorPalette.setColors();
+  colorPalette.setCustomProperties();
+
+  orbs.forEach(orb => {
+    orb.fill = colorPalette.randomColor();
+  });
+});
+</script>
+<script>
+//# sourceURL=pen.js
+function handleClick(event) {
+  event.preventDefault();
+
+  // 创建覆盖层元素
+  const overlay2 = document.createElement('div');
+  overlay2.classList.add('overlay2');
+
+  // 创建 iframe 元素
+  const iframe = document.createElement('iframe');
+  iframe.src = this.parentNode.querySelector('a').getAttribute('href');
+
+  // 创建关闭符号元素
+  const closeIcon = document.createElement('span');
+  closeIcon.innerHTML = '&times;';
+  closeIcon.classList.add('overlay-close');
+  closeIcon.addEventListener('click', handleClose);
+
+  // 将 iframe 元素和关闭符号元素添加到覆盖层中
+  overlay2.appendChild(iframe);
+  overlay2.appendChild(closeIcon);
+
+  // 将覆盖层添加到页面
+  document.body.appendChild(overlay2);
+}
+
+// 关闭事件处理程序
+function handleClose(event) {
+  event.preventDefault();
+
+  // 移除覆盖层
+  const overlay2 = document.querySelector('.overlay2');
+  overlay2.remove();
+}
+
+// 获取所有需要添加事件的 btn 元素
+const h3Elements = document.querySelectorAll('h3');
+
+// 遍历 btn btn-light 元素并添加点击事件处理程序
+h3Elements.forEach((h3) => {
+  h3.addEventListener('click', handleClick);
+});
+
+
+
+    </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+
+</html>

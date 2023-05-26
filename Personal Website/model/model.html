@@ -1,0 +1,332 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+
+
+    <link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+
+    <meta name="apple-mobile-web-app-title" content="CodePen">
+
+    <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+
+    <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111" />
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+  <title>CodePen - CSS-only Slide-up Caption Hover Effect</title>
+    <link rel="canonical" href="https://codepen.io/seyedi/pen/zYoeLEv" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Noto+Sans+JP&amp;display=swapps://github.com/produle/MockFlowFont/blob/master/MockFlowFont1/dist/MockFlowFont1.woff'>
+<link rel='stylesheet' href='https://assets.css-tricks.ir/font/font.css'>
+
+<style>
+:root {
+  --surface-color: #fff;
+  --curve: 40;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background-color: #fef8f8;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 4rem 5vw;
+  padding: 0;
+  list-style-type: none;
+}
+
+.card2 {
+  position: relative;
+  display: block;
+  height: 100%;
+  border-radius: calc(var(--curve) * 1px);
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.card2__image {
+  width: 100%;
+  height: auto;
+}
+
+.card2__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  border-radius: calc(var(--curve) * 1px);
+  background-color: var(--surface-color);
+  transform: translateY(100%);
+  transition: .2s ease-in-out
+}
+
+.card2:hover .card2__overlay {
+  transform: translateY(0);
+}
+
+.card2__header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  padding: 2em;
+  border-radius: calc(var(--curve) * 1px) 0 0 0;
+  background-color: var(--surface-color);
+  transform: translateY(-100%);
+  transition: .2s ease-in-out;
+}
+
+.card2__arc {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  z-index: 1;
+}
+
+.card2__arc path {
+  fill: var(--surface-color);
+  d: path("M 40 80 c 22 0 40 -22 40 -40 v 40 Z");
+}
+
+.card2:hover .card2__header {
+  transform: translateY(0);
+}
+
+.card2__thumb {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.card2__title {
+  font-size: 1em;
+  margin: 0 0 .3em;
+  color: #6A515E;
+}
+
+.card2__tagline {
+  display: block;
+  margin: 1em 0;
+  font-family: "MockFlowFont";
+  font-size: .8em;
+  color: #D7BDCA;
+}
+
+.card2__status {
+  font-size: .8em;
+  color: #D7BDCA;
+}
+
+.card2__description {
+  padding: 0 2em 2em;
+  margin: 0;
+  color: #D7BDCA;
+
+}
+</style>
+
+
+
+
+
+</head>
+
+<body translate="no">
+  <!--导航-->
+  <nav class="navbar navbar-expand-lg fixed-top" style="background-color:rgba(255, 255, 255, 0.375);">
+<div class="container-fluid">
+  <a class="navbar-brand" href="https://zhuangyuying123.github.io/Personal%20Website">Zhuang Yuying's resume</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="https://zhuangyuying123.github.io/Personal%20Website/web1">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="https://zhuangyuying123.github.io/Personal%20Website/model/model.html">3D model</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="https://zhuangyuying123.github.io/Personal%20Website/inter/inter.html">interactive design</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Marketing Planning
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="https://zhuangyuying123.github.io/Personal%20Website/Case/casepage1.html">Team work</a></li>
+          <li><a class="dropdown-item" href="https://zhuangyuying123.github.io/Personal%20Website/Case/casepage2.html">Personal work</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</nav>
+  <ul class="cards">
+  <li>
+    <a href="https://zhuangyuying123.github.io/Personal%20Website/model/model1/index.html" class="card2">
+      <img src="https://zhuangyuying123.github.io/Personal%20Website/gif/gif5.gif" class="card2__image" alt="" />
+      <div class="card2__overlay">
+        <div class="card2__header">
+          <svg class="card2__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
+          <div class="card2__header-text">
+            <h3 class="card2__title">Angle</h3>
+            <span class="card2__status">2023.5</span>
+          </div>
+        </div>
+        <p class="card2__description">Meeting an angel is a wonderful moment of encountering the divine.</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a href="https://zhuangyuying123.github.io/Personal%20Website/model/model3/index.html" class="card2">
+      <img src="https://zhuangyuying123.github.io/Personal%20Website/gif/gif3.gif" class="card2__image" alt="" />
+      <div class="card2__overlay">
+        <div class="card2__header">
+          <svg class="card2__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
+
+          <div class="card2__header-text">
+            <h3 class="card2__title">Lollipop</h3>
+            <span class="card2__status">2023.5</span>
+          </div>
+        </div>
+        <p class="card2__description">Life is like a lollipop, savor each moment before it melts away.</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a href="https://zhuangyuying123.github.io/Personal%20Website/model/model8/index.html" class="card2">
+      <img src="https://zhuangyuying123.github.io/Personal%20Website/gif/gif2.gif" class="card2__image" alt="" />
+      <div class="card2__overlay">
+        <div class="card2__header">
+          <svg class="card2__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
+          <div class="card2__header-text">
+            <h3 class="card2__title">Blue Planet</h3>
+            <span class="card2__status">2023.5</span>
+          </div>
+        </div>
+        <p class="card2__description">In the vast and boundless universe, there is always your tiny little planet.</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a href="https://zhuangyuying123.github.io/Personal%20Website/model/model7/index.html" class="card2">
+      <img src="https://zhuangyuying123.github.io/Personal%20Website/gif/gif6.gif" class="card2__image" alt="" />
+      <div class="card2__overlay">
+        <div class="card2__header">
+          <svg class="card2__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
+          <div class="card2__header-text">
+            <h3 class="card2__title">Cheese</h3>
+            <span class="card2__status">2023.5</span>
+          </div>
+        </div>
+        <p class="card2__description">Cheese is the poetry of milk.</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a href="https://zhuangyuying123.github.io/Personal%20Website/model/model9/index.html" class="card2">
+      <img src="https://zhuangyuying123.github.io/Personal%20Website/gif/gif4.gif" class="card2__image" alt="" />
+      <div class="card2__overlay">
+        <div class="card2__header">
+          <svg class="card2__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
+          <div class="card2__header-text">
+            <h3 class="card2__title">Sunflowers</h3>
+            <span class="card2__status">2023.5</span>
+          </div>
+        </div>
+        <p class="card2__description">Sunflowers teach us to always seek the light, even on the darkest days.</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a href="https://zhuangyuying123.github.io/Personal%20Website/model/model5/index.html" class="card2">
+      <img src="https://zhuangyuying123.github.io/Personal%20Website/gif/gif7.gif" class="card2__image" alt="" />
+      <div class="card2__overlay">
+        <div class="card2__header">
+          <svg class="card2__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
+          <div class="card2__header-text">
+            <h3 class="card2__title">Donut</h3>
+            <span class="card2__status">2023.5</span>
+          </div>
+        </div>
+        <p class="card2__description">Life is like a donut, it's the empty space in the middle that gives it meaning.</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a href="https://zhuangyuying123.github.io/Personal%20Website/model/model2/index.html" class="card2">
+      <img src="https://zhuangyuying123.github.io/Personal%20Website/gif/gif1.gif" class="card2__image" alt="" />
+      <div class="card2__overlay">
+        <div class="card2__header">
+          <svg class="card2__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
+          <div class="card2__header-text">
+            <h3 class="card2__title">Pig</h3>
+            <span class="card2__status">2023.5</span>
+          </div>
+        </div>
+        <p class="card2__description">Happiness is finding joy in the simplest things, just like a little pig playing in the mud.</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a href="https://zhuangyuying123.github.io/Personal%20Website/model/model6/index.html" class="card2">
+      <img src="https://zhuangyuying123.github.io/Personal%20Website/gif/gif8.gif" class="card2__image" alt="" />
+      <div class="card2__overlay">
+        <div class="card2__header">
+          <svg class="card2__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
+          <div class="card2__header-text">
+            <h3 class="card2__title">Cake</h3>
+            <span class="card2__status">2023.5</span>
+          </div>
+        </div>
+        <p class="card2__description">A slice of cake can make everything better, even if just for a moment.</p>
+      </div>
+    </a>
+  </li>
+  <li>
+    <a href="https://zhuangyuying123.github.io/Personal%20Website/model/model4/index.html" class="card2">
+      <img src="https://zhuangyuying123.github.io/Personal%20Website/gif/gif9.gif" class="card2__image" alt="" />
+      <div class="card2__overlay">
+        <div class="card2__header">
+          <svg class="card2__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
+          <div class="card2__header-text">
+            <h3 class="card2__title">Cloud</h3>
+            <span class="card2__status">2023.5</span>
+          </div>
+        </div>
+        <p class="card2__description">Even behind the gloomiest sky, there is always a ray of sunshine.</p>
+      </div>
+    </a>
+  </li>
+
+</ul>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>

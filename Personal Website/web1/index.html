@@ -174,60 +174,6 @@ a {
   justify-content: center;
   align-items: center;
 }
-
-/* Not too many browser support this yet but it's good to add! */
-@media (prefers-contrast: high) {
-  .orb-canvas {
-    display: none;
-  }
-  .overlay__title {
-    font-size: 5rem;
-    line-height:53rem;
-    margin-bottom: 1.5rem;
-  }
-}
-
-@media only screen and (max-width: 1140px) {
-  .overlay {
-    padding: 8rem 4rem;
-  }
-  .overlay__title {
-    font-size: 5rem;
-    line-height: 5rem;
-    margin-bottom: 1.5rem;
-  }
-}
-
-@media only screen and (max-width: 840px) {
-  body {
-    padding: 1.5rem;
-  }
-
-  .overlay {
-    padding: 4rem;
-    height: auto;
-  }
-
-}
-
-@media only screen and (max-width: 600px) {
-  .overlay {
-    padding: 1.5rem;
-  }
-
-  .overlay__btns {
-    flex-wrap: wrap;
-  }
-  .overlay__btn {
-    width: 100%;
-    font-size: 0.75rem;
-    margin-right: 0;
-  }
-
-  .overlay__btn:first-child {
-    margin-bottom: 1rem;
-  }
-}
 .navbar {
   max-width: 1000px; /* 设置导航栏的最大宽度 */
   margin: 0 auto; /* 水平居中导航栏 */
@@ -236,20 +182,12 @@ a {
 .navbar-nav .nav-link {
   white-space: nowrap;
 }
-.table tr {
-  width: 40%;
-}
 
-.table tr td{
-  width: 100rem;
-}
+
 .custom-table {
   white-space: nowrap;
 }
-.card{
-  background: rgba(255, 255, 255, 0.375);
-  height:350px;
-}
+
 .btn{
   background: rgba(255, 255, 255, 0.375);
   height:2rem
@@ -308,7 +246,7 @@ a {
   bottom: 0;
    left: 0;
   margin-bottom: 0;
-   position:sticky;
+   position:relative;
   width: 100%;
   text-align: center;
   box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.1);
@@ -444,6 +382,73 @@ a {
 
 }
 
+
+/* Not too many browser support this yet but it's good to add! */
+@media (prefers-contrast: high) {
+  .orb-canvas {
+    display: none;
+  }
+  .overlay__title {
+    font-size: 5rem;
+    line-height:53rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 1140px) {
+  .overlay {
+    padding: 8rem 4rem;
+  }
+  .overlay__title {
+    font-size: 5rem;
+    line-height: 5rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 840px) {
+  body {
+    padding: 1.5rem;
+  }
+
+  .overlay {
+    padding: 4rem;
+    height: auto;
+  }
+
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    weight:500px;
+      padding:0;
+      margin: 0;
+  }
+.orb-canvas {
+    width: 500px;
+  }
+  .overlay {
+    padding: 1.5rem;
+    width: 400px;
+  }
+
+  .overlay__btns {
+    flex-wrap: wrap;
+  }
+  .overlay__btn {
+    width: 100%;
+    font-size: 0.75rem;
+    margin-right: 0;
+  }
+
+  .overlay__btn:first-child {
+    margin-bottom: 1rem;
+  }
+}
+
+.footer {
+  weight: 400px;
+}
 </style>
 
   <script>
@@ -493,57 +498,54 @@ a {
 <div class="overlay">
   <!-- Overlay inner wrapper -->
   <div class="overlay__inner">
-
-    <div class="d-flex position-relative">
-      <img src="https://zhuangyuying123.github.io/Personal%20Website/photo/%E5%9B%BE%E7%89%8722.png" class="flex-shrink-0 me-3" alt="">
-      <div>
-        <h5 class="mt-0" style="text-align: center;">Essential information</h5>
-        <table class="table custom-table">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col"></th>
-      <th scope="col">Zhuangyuying</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Year of birth</td>
-      <td >:</td>
-      <td >2003.07</td>
-    </tr>
-    <tr>
-      <td>Nationality</td>
-      <td >:</td>
-      <td>Han</td>
-    </tr>
-    <tr>
-      <td>Telephone</td>
-      <td >:</td>
-      <td>18845840369</td>
-    </tr>
-    <tr>
-      <td>Mailbox</td>
-      <td >:</td>
-      <td>2021218033012@cuc.edu.cn</td>
-    </tr>
-    <tr>
-      <td>Address</td>
-      <td >:</td>
-      <td>Beijing</td>
-    </tr>
-    <tr>
-      <td>College</td>
-      <td > : </td>
-      <td>Communication University of China(CUC)</td>
-    </tr>
-    <tr>
-      <td>Major</td>
-      <td > : </td>
-      <td>Advertising (Digital marketing)</td>
-    </tr>
-  </tbody>
-</table>
+    <div class="card mb-3" style="max-width: 1600px; background-color:rgba(255, 255, 255, 0.375);">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="https://zhuangyuying123.github.io/Personal%20Website/photo/%E5%9B%BE%E7%89%8722.png" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Essential information</h5>
+            <table class="table custom-table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Zhuangyuying</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Year of birth</td>
+          <td >2003.07</td>
+        </tr>
+        <tr>
+          <td>Nationality</td>
+          <td>Han</td>
+        </tr>
+        <tr>
+          <td>Telephone</td>
+          <td>18845840369</td>
+        </tr>
+        <tr>
+          <td>Mailbox</td>
+          <td>2021218033012@cuc.edu.cn</td>
+        </tr>
+        <tr>
+          <td>Address</td>
+          <td>Beijing</td>
+        </tr>
+        <tr>
+          <td>College</td>
+          <td>Communication University of China(CUC)</td>
+        </tr>
+        <tr>
+          <td>Major</td>
+          <td>Advertising (Digital marketing)</td>
+        </tr>
+      </tbody>
+    </table>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -871,8 +873,7 @@ a {
   </div>
     </div>
 
-        <footer>
-    <div class="footer" style="  width: 1150px;">
+    <div class="footer" >
   <div class="contact-container" >
     <div class="column">
        <div class="contact-info">
@@ -895,7 +896,7 @@ a {
   <p>All rights reserved &copy; Zhuang Yuying</p>
 </div>
 </div>
-</footer>
+
 
 
 

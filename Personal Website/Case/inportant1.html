@@ -1,0 +1,464 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+
+
+    <link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+
+    <meta name="apple-mobile-web-app-title" content="CodePen">
+
+    <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+
+    <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+
+  <title>CodePen - Card Hover Interaction | HTML &amp; CSS </title>
+    <link rel="canonical" href="https://codepen.io/dev_loop/pen/PoqLGvV" />
+
+
+
+
+<style>
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e4e4e4;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 30px;
+}
+
+figure.card {
+  position: relative;
+  width: 360px;
+  height: 200px;
+  background-image: var(--image-src);
+  background-position: 50% 50%;
+  background-size: 125%;
+  transition: background 400ms ease;
+  box-shadow: 0 6.7px 5.3px rgba(0, 0, 0, 0.03), 0 22.3px 17.9px rgba(0, 0, 0, 0.05), 0 100px 80px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+}
+figure.card:hover figcaption {
+  transform: translateY(0px);
+}
+figure.card--1:hover {
+  background-position: 50% 100%;
+}
+figure.card--1 figcaption {
+  bottom: 0;
+  transform: translateY(80px);
+}
+figure.card--2 {
+  background-size: 110%;
+}
+figure.card--2:hover {
+  background-position: 50% -100%;
+}
+figure.card--2 figcaption {
+  top: 0;
+  transform: translateY(-80px);
+}
+figure.card--3 {
+  background-size: 115%;
+}
+figure.card--3:hover {
+  background-position: -100% 50%;
+}
+figure.card--3 figcaption {
+  left: 0;
+  transform: translateX(-180px);
+}
+figure.card--4:hover {
+  background-position: 100% 50%;
+}
+figure.card--4 figcaption {
+  right: 0;
+  transform: translateX(180px);
+}
+figure.card--1 figcaption, figure.card--2 figcaption {
+  width: 100%;
+  height: 80px;
+  padding: 15px 20px;
+}
+figure.card--3 figcaption, figure.card--4 figcaption {
+  flex-direction: column;
+  width: 180px;
+  height: 100%;
+  padding: 20px 15px;
+}
+figure.card figcaption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  background: #282828;
+  transition: transform 400ms ease;
+}
+figure.card figcaption .info {
+  color: #e2e2e2;
+  font-family: "Montserrat";
+}
+figure.card figcaption .info h3 {
+  color: #F8D2D1;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  margin-bottom: 1px;
+}
+figure.card figcaption .info a:hover {
+color: #Fcedf4;
+}
+figure.card figcaption .info a:visited {
+color: #F8D2D1;
+}
+figure.card figcaption .info span {
+  color: #Fcedf4;
+  font-size: 0.85rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+figure.card figcaption .links {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+figure.card figcaption .links a {
+  text-decoration: none;
+  position: relative;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  margin-left: 10px;
+  font-size: 1.2rem;
+  opacity: 0.65;
+  border-radius: 50%;
+  overflow: hidden;
+}
+figure.card figcaption .links a:hover {
+  opacity: 1;
+}
+figure.card figcaption .links a:focus {
+  outline: none;
+}
+figure.card figcaption .links a:focus::after {
+  transform: scale(1);
+  opacity: 1;
+}
+figure.card figcaption .links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  opacity: 0;
+  background: rgba(255, 255, 255, 0.05);
+  transform: scale(0.5);
+  z-index: -1;
+  transition: all 150ms ease;
+}
+
+@media only screen and (max-width: 900px) {
+  body {
+    align-items: start;
+  }
+
+  .container {
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: 1fr;
+    grid-gap: 40px;
+    padding: 80px 0;
+  }
+}
+.support {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  padding: 10px;
+  display: flex;
+}
+.support a {
+  margin: 0 10px;
+  color: #222;
+  font-size: 1.8rem;
+  backface-visibility: hidden;
+  transition: all 150ms ease;
+}
+.support a:hover {
+  transform: scale(1.1);
+}
+.overlay {
+   position: fixed;
+   top: 10%;
+   left: 0;
+   width: 100%;
+   height: 90%;
+   background-color: rgba(0, 0, 0, 0.8);
+   display: flex;
+   justify-content: flex-end;
+   align-items: flex-start;
+   padding: 10px;
+   z-index: 9999;
+ }
+
+ .overlay iframe {
+   width: 100%;
+   height: 100%;
+   border: none;
+ }
+
+ .overlay-close {
+   color: #fff;
+   font-size: 24px;
+   margin-left: 10px;
+   cursor: pointer;
+ }
+
+ .overlay-close:hover {
+   opacity: 0.8;
+ }
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+
+
+</head>
+
+<body translate="no">
+  <!--导航-->
+  <nav class="navbar navbar-expand-lg fixed-top" style="background-color:rgba(255, 255, 255, 0.375);">
+<div class="container-fluid">
+  <a class="navbar-brand" href="https://zhuangyuying123.github.io/Personal%20Website">Zhuang Yuying's resume</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="https://zhuangyuying123.github.io/Personal%20Website/web1">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="https://zhuangyuying123.github.io/Personal%20Website/model/model.html">3D model</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="https://zhuangyuying123.github.io/Personal%20Website/inter/inter.html">interactive design</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Marketing Planning
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="https://zhuangyuying123.github.io/Personal%20Website/Case/casepage1.html">Team work</a></li>
+          <li><a class="dropdown-item" href="https://zhuangyuying123.github.io/Personal%20Website/Case/casepage2.html">Personal work</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</nav>
+
+  <div class="container">
+
+    <figure class="card card--3" style="--image-src: url('https://zhuangyuying123.github.io/Personal%20Website/photo/%E5%9B%BE%E7%89%878.png')">
+      <figcaption>
+        <span class="info">
+          <span>From the Bing Dwen Dwen to see the Chinese cultural self-confidence</span>
+          <h3>
+            <a href="https://zhuangyuying123.github.io/Personal%20Website/Case/case7/page7">Power Point</a>
+          </h3>
+          <h3>
+            <a href="https://zhuangyuying123.github.io/Personal%20Website/Case/case7/page7-1">Text Version</a>
+          </h3>
+
+
+        </span>
+        <span class="links">
+        <a href="#"><i class="fas fa-heart"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="javascript:history.back();"><i class="fas fa-times"></i></a>
+      </span>
+
+      </figcaption>
+    </figure>
+
+	<figure class="card card--2" style="--image-src: url('https://zhuangyuying123.github.io/Personal%20Website/photo/%E5%9B%BE%E7%89%8710.png')">
+		<figcaption>
+			<span class="info">
+        <span>vivo brand digital marketing research report</span>
+
+        <h3>
+          <a href="https://zhuangyuying123.github.io/Personal%20Website/Case/case8/page8">Text Version</a>
+        </h3>
+
+			</span>
+			<span class="links">
+				<a href="#"><i class="fas fa-heart"></i></a>
+				<a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+				<a href="https://unsplash.com/photos/TFyi0QOx08c" target="_blank"><i class="fas fa-share"></i></a>
+			</span>
+		</figcaption>
+	</figure>
+
+  <figure class="card card--4" style="--image-src: url('https://zhuangyuying123.github.io/Personal%20Website/photo/%E5%9B%BE%E7%89%879.png')">
+		<figcaption>
+			<span class="info">
+        <span>Advertising and society</span>
+        <h3>
+          <a href="https://zhuangyuying123.github.io/Personal%20Website/Case/case9/page9">Power Point</a>
+        </h3>
+        <h3>
+          <a href="https://zhuangyuying123.github.io/Personal%20Website/Case/case9/page9-1">Text Version</a>
+        </h3>
+
+			</span>
+			<span class="links">
+				<a href="#"><i class="fas fa-heart"></i></a>
+				<a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+				<a href="https://unsplash.com/photos/TFyi0QOx08c" target="_blank"><i class="fas fa-share"></i></a>
+			</span>
+		</figcaption>
+	</figure>
+
+  <figure class="card card--3" style="--image-src: url('https://zhuangyuying123.github.io/Personal%20Website/photo/%E5%9B%BE%E7%89%877.png')">
+		<figcaption>
+			<span class="info">
+        <span>A brief analysis of the public discussion dilemma of the topic "Is it reasonable to sell sanitary napkins on high-speed rail?</span>
+        <h3>
+          <a href="https://zhuangyuying123.github.io/Personal%20Website/Case/case10/page10">Text Version</a>
+        </h3>
+
+
+			</span>
+			<span class="links">
+				<a href="#"><i class="fas fa-heart"></i></a>
+				<a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+				<a href="https://unsplash.com/photos/TFyi0QOx08c" target="_blank"><i class="fas fa-share"></i></a>
+			</span>
+		</figcaption>
+	</figure>
+
+  <figure class="card card--1" style="--image-src: url('https://zhuangyuying123.github.io/Personal%20Website/photo/%E5%9B%BE%E7%89%8712.png')">
+		<figcaption>
+			<span class="info">
+        <span>Analysis of consumption characteristics of Generation Z women based on their group personality</span>
+        <h3>
+          <a href="https://zhuangyuying123.github.io/Personal%20Website/Case/case11/page11">Text Version</a>
+        </h3>
+
+			</span>
+			<span class="links">
+				<a href="#"><i class="fas fa-heart"></i></a>
+				<a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+				<a href="https://unsplash.com/photos/TFyi0QOx08c" target="_blank"><i class="fas fa-share"></i></a>
+			</span>
+		</figcaption>
+	</figure>
+
+  <figure class="card card--4" style="--image-src: url('https://zhuangyuying123.github.io/Personal%20Website/photo/%E5%9B%BE%E7%89%8711.png')">
+    <figcaption>
+      <span class="info">
+        <span>Sunshine home disinfection financing plan</span>
+        <h3>
+          <a href="https://zhuangyuying123.github.io/Personal%20Website/Case/case12/page12">Text Version</a>
+        </h3>
+      </span>
+      <span class="links">
+        <a href="#"><i class="fas fa-heart"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://unsplash.com/photos/DLwUVlzrP0Q" target="_blank"><i class="fas fa-share"></i></a>
+      </span>
+    </figcaption>
+  </figure>
+
+
+
+</div>
+
+
+
+<div class="support">
+	<a href="https://twitter.com/DevLoop01" target="_blank"><i class="fab fa-twitter-square"></i></a>
+	<a href="https://dribbble.com/devloop01" target="_blank"><i class="fab fa-dribbble"></i></a>
+</div>
+
+
+<script>
+function handleClick(event) {
+  event.preventDefault();
+
+  // 创建覆盖层元素
+  const overlay = document.createElement('div');
+  overlay.classList.add('overlay');
+
+  // 创建 iframe 元素
+  // 创建 iframe 元素
+  const iframe = document.createElement('iframe');
+  iframe.src = this.querySelector('a').getAttribute('href');
+
+
+  // 创建关闭符号元素
+  const closeIcon = document.createElement('span');
+  closeIcon.innerHTML = '&times;';
+  closeIcon.classList.add('overlay-close');
+  closeIcon.addEventListener('click', handleClose);
+
+  // 将 iframe 元素和关闭符号元素添加到覆盖层中
+  overlay.appendChild(iframe);
+  overlay.appendChild(closeIcon);
+
+  // 将覆盖层添加到页面
+  document.body.appendChild(overlay);
+}
+
+// 关闭事件处理程序
+function handleClose(event) {
+  event.preventDefault();
+
+  // 移除覆盖层
+  const overlay = document.querySelector('.overlay');
+  overlay.remove();
+}
+
+// 获取所有需要添加事件的h3元素
+const h3Elements = document.querySelectorAll('h3');
+
+// 遍历h3元素并添加点击事件处理程序
+h3Elements.forEach((h3) => {
+  h3.addEventListener('click', handleClick);
+});
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+
+</html>

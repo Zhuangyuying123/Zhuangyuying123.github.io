@@ -143,17 +143,17 @@ let changeHandlerFunction = function (option1, option2, text) {
   }
   if (text === "被送进了精神病院") {
     document.body.style.backgroundImage =
-      "url('jsby.png')";
+      "url('assets/images/jsby.png')";
   }
 
   if (text === "你破产了") {
     document.body.style.backgroundImage =
-      "url('pc.png')";
+      "url('assets/images/pc.png')";
   }
 
   if (text === "好险，差点就破产了") {
     document.body.style.backgroundImage =
-      "url('cdpc.png')";
+      "url('assets/images/cdpc.png')";
 
   }
   if (text === "你大赚一笔") {
@@ -161,6 +161,6 @@ let changeHandlerFunction = function (option1, option2, text) {
       "url('fc.png')";}
   if (text === "好险，差点就发财了") {
         document.body.style.backgroundImage =
-          "url('cdfc.png')";}
+          "url('assets/images/cdfc.png')";}
 
 };

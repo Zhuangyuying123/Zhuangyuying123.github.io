@@ -1,0 +1,915 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>UI Portfolio - Personal Category Bootstrap Responsive Website Template - Blog</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js"></script>
+    <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="assets/css/style-liberty.css">
+
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand" href="index.html">
+                        <i class="fab fa-asymmetrik"></i> UI Portfolio
+                    </a>
+                </h1>
+                <!-- if logo is image enable this
+        <a class="navbar-brand" href="#index.html">
+            <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+        </a> -->
+                <button class="navbar-toggler collapsed bg-gradient" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav ms-lg-auto align-items-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">首页 <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="blog-nosidebar.html">方言知识</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="heading.html">方言测试</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="services.html">相关周边</a>
+                        </li>
+
+
+
+                        <!--/right-btn-->
+                        <div class="header-btn mx-2">
+                            <a class="btn btn-style btn-primary mr-lg-5" href="contact.html">联系我们</a>
+                        </div>
+                        <!--/right-btn-->
+
+                    </ul>
+                </div>
+                <!-- search -->
+                <ul class="cd-header-buttons px-lg-2">
+                    <li>
+                    <a class="cd-search-trigger" href="#cd-search">
+                        <span></span>
+                    </a>
+                    </li>
+                </ul>
+                <div id="cd-search" class="cd-search">
+                    <form action="#url" method="post">
+                        <input name="Search" type="search" placeholder="Click enter after typing...">
+                    </form>
+                </div>
+                <!-- //search -->
+
+                <!-- toggle switch for light and dark theme -->
+                <div class="cont-ser-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//header-->
+
+
+    <!-- Blog banner -->
+    <section class="w3l-about-breadcrumb text-center">
+        <div class="breadcrumb-bg breadcrumb-bg-about py-5">
+            <div class="container py-lg-5 mt-5">
+                <div class="banner-info-grid mt-5">
+                    <h2 class="w3l-title-breadcrumb">七大方言知识</h2>
+                </div>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="#url">Home</a></li>
+                    <li class="active"><span class="fa fa-angle-right mx-2" aria-hidden="true"></span> Knowledge</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- //Blog banner -->
+
+    <section class="w3l-clients" id="testimonials">
+        <div class="midd-w3 py-5">
+            <div class="container py-lg-5 py-md-3">
+                <div class="title-heading-w3 mx-auto text-center mb-sm-5 mb-4">
+                <span class="w3l-title-small">方言信息数据可视化</span>
+                    </div>
+                <div id="owl-demo1" class="owl-carousel owl-theme mt-4 py-2 mb-5">
+                    <div class="item">
+                        <div class="testimonial-content">
+                            <div class="testimonial">
+                              <div class="portfolio-item2 content" data-id="id-1" data-type="cat-item-1">
+                                <canvas id="myChart" style="width:300px">
+                                  </canvas>
+
+                              </div>
+                              <div class="portfolio-item2 content" data-id="id-1" data-type="cat-item-1">
+
+                      <p >官话是最广泛使用的方言，有7.98亿人使用，占总人口的66.2%。其余的方言使用人数相对较少，占总人口的33.8%，但仍然具有一定的地域性和社群影响力。</p>
+
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="testimonial-content">
+                            <div class="testimonial">
+
+                              <div class="portfolio-item2 content mt-lg-0 mt-4" data-id="id-2" data-type="cat-item-2">
+                                <canvas id="myChart1" style="height:300px"></canvas>
+                                </div>
+                                <div class="portfolio-item2 content mt-4" data-id="id-2" data-type="cat-item-2">
+                            <p >官话中西南官话的使用人数最多为2.7亿人，北京官话使用人数最少为1500万人。</p>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+
+                    <div class="item">
+                        <div class="testimonial-content">
+                            <div class="testimonial">
+                              <div class="portfolio-item2 content mt-md-0 mt-4" data-id="id-3" data-type="cat-item-3">
+                                <canvas id="myChart2" style="height:300px"></canvas>
+                              </div>
+
+                              <div class="portfolio-item2 content mt-md-0 mt-4" data-id="id-3" data-type="cat-item-3">
+                        <p>粤语位居第一，有1亿人使用，主要分布地区为广东和香港，吴语和闽语分别位居第二和第三位，分别有9000万和8000万人使用。这两种方言主要在福建和江苏地区使用较多。
+              晋语和赣语分别位居第四、第五，分别有6350万、5500万人使用。晋语主要在山西和陕西等地使用，赣语主要在江西使用，客家话、湘语、徽语和平话土话及其他方言分别位
+              居第七至第十位，分别有5000万、2500万、436万和780万人使用。</p>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="testimonial-content">
+                            <div class="testimonial">
+                              <div class="portfolio-item2 content mt-lg-5 mt-4" data-id="id-3" data-type="cat-item-3">
+                                <canvas id="myChart4" style="height:300px"></canvas>
+                                </div>
+                                <div class="portfolio-item2 content mt-4" data-id="id-4" data-type="cat-item-4">
+                              <p>根据Ethnologue (2022, 25th edition)数据显示：官话（包括标准普通话/国语），在全球范围内排名第2,仅次于英语，使用人数有11.18亿人，吴语（包括上海话）：在全球范围内排名第17，使用人数8560万人，
+                              粤语在全球范围内排名第23，使用人数8180万人，
+                              闽南语在全球范围内排名第39，使用人数4970万人，晋语在全球范围内排名第40，使用人数4710万人，客家话在全球范围内排名第42，使用人数4410万人。</p>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Blog Section -->
+    <section class="w3l-blog">
+        <div class="blog py-5" id="Newsblog">
+            <div class="container py-lg-5 py-md-4 py-2">
+                <div class="card">
+                    <div class="card-header p-0 position-relative">
+                        <a href="https://www.bilibili.com/video/BV1Pt411F7HR/?vd_source=dca4821e4aed811919ed20a1b1777af7" class="zoom d-block">
+                            <img class="card-img-bottom d-block" src="assets/images/v2-dcf47f8a35bae399623055902605f00f_720w.webp" alt="Card image cap">
+                        </a>
+                    </div>
+                    <div class="card-body blog-details">
+
+                        <a href="https://baike.baidu.com/item/%E5%8C%97%E6%96%B9%E8%AF%9D#:~:text=%E5%8C%97%E6%96%B9%E8%AF%9D%EF%BC%88%E6%97%A7%E7%A7%B0%EF%BC%89%EF%BC%8C,%E5%AE%98%E8%AF%9D%E3%80%81%E8%A5%BF%E5%8D%97%E5%AE%98%E8%AF%9D%E3%80%82" class="blog-desc">
+                            北方方言</a>
+                        <p class="mt-4">古全浊声母今读塞音、塞擦音时，平声为送气清音、仄声为不送气清音。
+辅音的韵尾只有两个鼻辅音。
+声调多数为阴平、阳平、上声、去声四类。（官话方言的内部差异主要表现在声调方面。）</p>
+                        <div class="card-footer">
+                            <div class="author align-items-center">
+                                <a href="#author" class="post-author">
+                                    <img src="assets/images/v2-13e5111ceba8c4011bbecccb83809110_720w.webp" alt="" class="img-fluid rounded-circle">
+                                </a>
+                                <ul class="blog-meta">
+                                    <li>
+                                        <a href="#author">代表：北京话</a>
+                                    </li>
+                                    <li>
+                                        <span class="meta-description">占汉族比例：70%以上</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-5">
+                    <div class="card-header p-0 position-relative">
+                        <a href="https://tv.sohu.com/v/dXMvNjMzMzY0MDAvMjk4NzUzODYuc2h0bWw=.html" class="zoom d-block">
+                            <img class="card-img-bottom d-block" src="assets/images/v2-81a5e16ad988e2c64d92c45f1002a093_720w.webp" alt="Card image cap">
+                        </a>
+                    </div>
+                    <div class="card-body blog-details">
+                        <a href="https://baike.baidu.com/item/%E5%90%B4%E8%AF%AD/659462?fromtitle=%E5%90%B4%E6%96%B9%E8%A8%80&fromid=2613420&fromModule=lemma_search-box" class="blog-desc">吴方言 </a>
+                        <p class="mt-4">全浊音(吴语标志，低沉雄浑)</p>
+                        <div class="card-footer">
+                            <div class="author align-items-center">
+                                <a href="#author" class="post-author">
+                                    <img src="assets/images/v2-fdd73f8332cafe1b45bcca23469d5238_720w.webp" alt="" class="img-fluid rounded-circle">
+                                </a>
+                                <ul class="blog-meta">
+                                    <li>
+                                        <a href="#author">代表：苏州话</a>
+                                    </li>
+                                    <li>
+                                        <span class="meta-description">占汉族比例：8.4%左右</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-5">
+                    <div class="card-header p-0 position-relative">
+                        <a href="https://www.bilibili.com/video/BV1P8411G7ew/" class="zoom d-block">
+                            <img class="card-img-bottom d-block" src="assets/images/v2-bc56cce1afcb354c810acf1424703c87_720w.webp" alt="Card image cap">
+                        </a>
+                    </div>
+                    <div class="card-body blog-details">
+                        <a href="https://baike.baidu.com/item/%E6%B9%98%E8%AF%AD/659537?fromModule=lemma_search-box&fromtitle=%E6%B9%98%E6%96%B9%E8%A8%80&fromid=2625918" class="blog-desc">湘方言</a>
+                        <p class="mt-4">古浊音系统在相当一部分地区保留得比较完整;古全浊声母舒声字今逢塞音、塞擦音时，无论清浊,般都念不送气音</p>
+                        <div class="card-footer">
+                            <div class="author align-items-center">
+                                <a href="#author" class="post-author">
+                                    <img src="assets/images/v2-6201258558d35ca9ddd86ca896bb9038_720w.webp" alt="" class="img-fluid rounded-circle">
+                                </a>
+                                <ul class="blog-meta">
+                                    <li>
+                                        <a href="#author"> 代表：长沙话</a>
+                                    </li>
+                                    <li>
+                                        <span class="meta-description">占汉族比例5%左右</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-5">
+                    <div class="card-header p-0 position-relative">
+                        <a href="https://www.bilibili.com/video/BV1yS4y1Q7fZ/" class="zoom d-block">
+                            <img class="card-img-bottom d-block" src="assets/images/v2-1f632c29b77a1354149cf294e91375fe_720w.webp" alt="Card image cap">
+                        </a>
+                    </div>
+
+                    <div class="card-body blog-details">
+
+                        <a href="https://baike.baidu.com/item/%E8%B5%A3%E8%AF%AD/1322722?fromModule=lemma_search-box&fromtitle=%E8%B5%A3%E6%96%B9%E8%A8%80&fromid=2190426" class="blog-desc">
+                            赣方言 </a>
+                        <p class="mt-4">大多拥有大量的文白异读、频繁的连音变调，并且皆无唇齿咬合发声的唇齿音。</p>
+                        <div class="card-footer">
+                            <div class="author align-items-center">
+                                <a href="#author" class="post-author">
+                                    <img src="assets/images/v2-b3f4448feaf7388f3a9cccdae48f697d_720w.webp" alt="" class="img-fluid rounded-circle">
+                                </a>
+                                <ul class="blog-meta">
+                                    <li>
+                                        <a href="#author">代表：南昌话</a>
+                                    </li>
+                                    <li>
+                                        <span class="meta-description">占中国人口：4%左右</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-5">
+                    <div class="card-header p-0 position-relative">
+                        <a href="https://tv.sohu.com/v/dXMvNjMyNjg4NDYvNjQ1MDM2MjQuc2h0bWw=.html" class="zoom d-block">
+                            <img class="card-img-bottom d-block" src="assets/images/v2-5b381b07ec0d57020b6e0c3dd9997dd2_720w.webp" alt="Card image cap">
+                        </a>
+                    </div>
+                    <div class="card-body blog-details">
+                        <a href="https://baike.baidu.com/item/%E5%AE%A2%E5%AE%B6%E8%AF%AD?fromtitle=%E5%AE%A2%E5%AE%B6%E6%96%B9%E8%A8%80&fromid=620002&fromModule=lemma_search-box" class="blog-desc">
+                          客家方言 </a>
+                        <p class="mt-4">客语继承了较多古汉语的特性，如完整的入声韵尾[-p]、[t]、[-k]。</p>
+                        <div class="card-footer">
+                            <div class="author align-items-center">
+                                <a href="#author" class="post-author">
+                                    <img src="assets/images/v2-03ca14a6e82a0c84a8c3c13eb7d77e19_720w.webp" alt="" class="img-fluid rounded-circle">
+                                </a>
+                                <ul class="blog-meta">
+                                    <li>
+                                        <a href="#author">代表：广东省梅县话</a>
+                                    </li>
+                                    <li>
+                                        <span class="meta-description">占汉族比例：4%左右</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-5">
+                    <div class="card-header p-0 position-relative">
+                        <a href="https://www.bilibili.com/video/BV1B24y1N7u1/?vd_source=dca4821e4aed811919ed20a1b1777af7" class="zoom d-block">
+                            <img class="card-img-bottom d-block" src="assets/images/v2-bce51c84d45cc556d271a6ca0c586869_720w.webp" alt="Card image cap">
+                        </a>
+                    </div>
+                <div class="card-body blog-details">
+
+                    <a href="https://baike.baidu.com/item/%E9%97%BD%E8%AF%AD?fromModule=lemma_search-box" class="blog-desc">
+                        闽语 </a>
+                    <p class="mt-4">各闽语分支大多拥有大量的文白异读、频繁的连音变调，并且皆无唇齿咬合发声的唇齿音。</p>
+                    <div class="card-footer">
+                        <div class="author align-items-center">
+                            <a href="#author" class="post-author">
+                                <img src="assets/images/v2-6c692219ee9941fb28d05e9471e35f8f_r.webp" alt="" class="img-fluid rounded-circle">
+                            </a>
+                            <ul class="blog-meta">
+                                <li>
+                                    <a href="#author">代表：厦门话</a>
+                                </li>
+                                <li>
+                                    <span class="meta-description">占汉族比例：8%左右</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mt-5">
+                <div class="card-header p-0 position-relative">
+                    <a href="https://www.bilibili.com/video/BV1Wo4y1j7gL/" class="zoom d-block">
+                        <img class="card-img-bottom d-block" src="assets/images/v2-65156e44c507f0f574f17bd9254ec642_720w.webp" alt="Card image cap">
+                    </a>
+                </div>
+            <div class="card-body blog-details">
+
+                <a href="https://baike.baidu.com/item/%E7%B2%A4%E8%AF%AD/266782?fromModule=lemma_search-box" class="blog-desc">
+                    粤语 </a>
+                <p class="mt-4">保留有许多古老发音，粤语保留有较多古词、古义，措辞古雅,且粤语的许多词语，包括语气助词，都可以直接在古汉语典籍中找到来源。</p>
+                <div class="card-footer">
+                    <div class="author align-items-center">
+                        <a href="#author" class="post-author">
+                            <img src="assets/images/v2-4de5a40be875181f1c70af4ffa84919e_720w.webp" alt="" class="img-fluid rounded-circle">
+                        </a>
+                        <ul class="blog-meta">
+                            <li>
+                                <a href="#author">代表：广州话</a>
+                            </li>
+                            <li>
+                                <span class="meta-description">占汉族比例：12%左右</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- //Blog Section -->
+
+
+
+    <!-- footer -->
+    <footer class="text-center">
+        <div class="footer py-5">
+            <div class="container py-md-4">
+                <div clss="footer-logo">
+                    <a class="logo" href="index.html">
+                        <i class="fab fa-asymmetrik"></i> UI Portfolio
+                    </a>
+                </div>
+                <div class="footer-contact-info mt-4">
+                    <ul>
+                        <li>
+                            <a href="tel:+12 345 678 900" class="contact-text-sub">
+                                <span class="fas fa-phone me-2"></span>+12 345 678 900</a>
+                        </li>
+                        <li>
+                            <a href="mailto:info@example.com" class="contact-text-sub">
+                                <span class="fas fa-envelope me-2"></span>info@example.com </a>
+                        </li>
+                        <li>
+                            <p class="contact-text-sub">
+                                <span class="fas fa-map-marker me-2"></span>208 Avenue street, UK - 62617.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container py-4">
+            <div class="row footer-grids">
+                <div class="col-lg-6 copyright text-lg-start text-center align-center">
+                    <p>© 2022 UI Portfolio. All Rights Reserved | <a target="_blank" href="http://www.mobanwang.com/" title="网页模板">网页模板</a>
+                    </p>
+                </div>
+                <div class="col-lg-6 text-lg-end text-center mt-lg-0 mt-4">
+                    <div class="social">
+                        <ul>
+                            <li><a href="#url"><span class="fab me-2 fa-facebook-f"></span></a></li>
+                            <li><a href="#url"><span class="fab me-2 fa-twitter"></span></a></li>
+                            <li><a href="#url"><span class="fab me-2 fa-google-plus"></span></a></li>
+                            <li><a href="#url"><span class="fab me-2 fa-pinterest"></span></a></li>
+                            <li><a href="#url"><span class="fab me-2 fa-vk"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- //footer -->
+
+
+
+    <!-- Js scripts -->
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fas fa-level-up-alt" aria-hidden="true"></span>
+    </button>
+    <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+        let myChart = document.getElementById('myChart').getContext('2d');
+        let chart = new Chart(myChart, {
+          type:'pie',
+          data:{
+            labels:['官话','其他方言'],
+            datasets:[{
+              label:'Population',
+              data:[
+                81200,
+                10000+9000+8000+6305+5500+5000+2500+4260+780
+              ],
+              backgroundColor:[
+                'rgba(255,99,132,0.2)',
+                'rgba(54,162,235,0.2)'
+              ],
+              borderWidth:1,
+              borderColor:'#777',
+              hoverBorderWidth:3,
+              hoverBorderColor:'#000'
+            }],
+          },
+          options:{
+            plugins:{
+              title:{
+                display:true,
+                text:'国内使用官话及其他方言人口数量（单位：万人）：',
+                font:{
+                  size:25
+                }
+              },
+              legend:{
+                display:true,
+                position:'right',
+                labels:{
+                  font:{
+                    size:15,
+                  }
+                }
+              },
+              layout:{
+                padding:{
+                  left:50,
+                  right:0,
+                  top:0,
+                  bottom:0
+                }
+              },
+              tooltip:{
+                enabled:true
+              }
+            }
+          }
+        });
+
+
+        let myChart2 = document.getElementById('myChart2').getContext('2d');
+        let chart2 = new Chart(myChart2, {
+          type:'bar',
+          data:{
+            labels:['粤语','吴语','闽语','晋语','赣语','客家话','湘语','徽语','平话土话及其他'],
+            datasets:[{
+              label:'Population',
+              data:[
+                10000,
+                9000,
+                8000,
+                6305,
+                5500,
+                5000,
+                2500,
+                330,
+                780
+              ],
+              backgroundColor:[
+            'rgba(255,99,132,0.2)',
+            'rgba(54,162,235,0.2)',
+            'rgba(255,206,86,0.2)',
+            'rgba(75,192,192,0.2)',
+            'rgba(153,102,255,0.2)',
+            'rgba(235,206,86,0.2)',
+            'rgba(72,192,192,0.2)',
+            'rgba(143,102,255,0.2)',
+            'rgba(215,206,86,0.2)'
+          ],
+          borderColor: [
+            'rgba(255,99,132)',
+            'rgba(54,162,235)',
+            'rgba(255,206,86)',
+            'rgba(75,192,192)',
+            'rgba(153,102,255)',
+            'rgba(235,206,86)',
+            'rgba(72,192,192)',
+            'rgba(143,102,255)',
+            'rgba(215,206,86)'
+
+          ],
+
+              borderWidth:1,
+              borderColor:'#777',
+              hoverBorderWidth:3,
+              hoverBorderColor:'#000'
+            }],
+          },
+          options:{
+            plugins:{
+              title:{
+                display:true,
+                text:'国内使用方言人口数量（单位：万人）：',
+                font:{
+                  size:25
+                }
+              },
+              legend:{
+                display:false,
+
+              },
+              layout:{
+                padding:{
+                  left:50,
+                  right:0,
+                  top:0,
+                  bottom:0
+                }
+              },
+              tooltip:{
+               enabled:true
+             }
+           }
+         }
+        });
+
+        let myChart4 = document.getElementById('myChart4').getContext('2d');
+        let chart4 = new Chart(myChart4, {
+          type:'bar',
+          data:{
+            labels: ['官话','粤语','吴语','闽南语','晋语','客家话'],
+            datasets: [{
+              label: 'Population',
+              data: [1118, 85.6, 81.8, 49.7, 47.1, 44.1],
+              backgroundColor: [
+                'rgba(255,99,132,0.2)',
+                'rgba(54,162,235,0.2)',
+                'rgba(255,206,86,0.2)',
+                'rgba(75,192,192,0.2)',
+                'rgba(153,102,255,0.2)',
+                'rgba(235,206,86,0.2)'
+              ],
+              borderColor: [
+                'rgba(255,99,132)',
+                'rgba(54,162,235)',
+                'rgba(255,206,86)',
+                'rgba(75,192,192)',
+                'rgba(153,102,255)',
+                'rgba(235,206,86)'
+              ],
+              borderWidth: 1,
+              borderColor: '#777',
+              hoverBorderWidth: 3,
+              hoverBorderColor: '#000'
+            }],
+          },
+          options: {
+            indexAxis: 'y',
+            plugins:{
+              title:{
+                display:true,
+                text:'世界使用官话及方言人口数量（单位：百万）',
+                font:{
+                  size:25
+                }
+              },
+              legend:{
+                display:false
+              },
+              layout:{
+                padding:{
+                  left:50,
+                  right:0,
+                  top:0,
+                  bottom:0
+                }
+              },
+              tooltip:{
+               enabled:true
+             }
+           }
+         }
+       });
+
+
+
+
+    </script>
+    <!-- //move top -->
+
+    <!-- common jquery plugin -->
+    <script src="assets/js/jquery-3.3.1.min.js"></script>
+    <!-- //common jquery plugin -->
+
+    <!-- theme switch js (light and dark)-->
+    <script src="assets/js/theme-change.js"></script>
+    <!-- //theme switch js (light and dark)-->
+
+    <!--search-bar-->
+    <script src="assets/js/search.js"></script>
+    <!--//search-bar-->
+
+    <!-- video popup -->
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.popup-with-zoom-anim').magnificPopup({
+                type: 'inline',
+
+                fixedContentPos: false,
+                fixedBgPos: true,
+
+                overflowY: 'auto',
+
+                closeBtnInside: true,
+                preloader: false,
+
+                midClick: true,
+                removalDelay: 300,
+                mainClass: 'my-mfp-zoom-in'
+            });
+
+            $('.popup-with-move-anim').magnificPopup({
+                type: 'inline',
+
+                fixedContentPos: false,
+                fixedBgPos: true,
+
+                overflowY: 'auto',
+
+                closeBtnInside: true,
+                preloader: false,
+
+                midClick: true,
+                removalDelay: 300,
+                mainClass: 'my-mfp-slide-bottom'
+            });
+        });
+    </script>
+    <!-- //video popup -->
+
+    <!--/stats-number-counter-->
+    <script src="assets/js/jquery.waypoints.min.js"></script>
+    <script src="assets/js/jquery.countup.js"></script>
+    <script>
+        $('.counter').countUp();
+    </script>
+    <!--//stats-number-counter-->
+
+    <!--/owlcarousel-->
+    <script src="assets/js/owl.carousel.js"></script>
+    <!-- script for tesimonials carousel slider -->
+    <script>
+        $(document).ready(function () {
+          $("#owl-demo1").owlCarousel({
+            loop: true,
+            margin: 30,
+            nav: false,
+            responsiveClass: true,
+            responsive: {
+              0: {
+                items: 1,
+                nav: false
+              },
+              768: {
+                items: 2,
+                nav: false
+              },
+              1024: {
+                items: 3,
+                nav: false
+              }
+            }
+          })
+        })
+      </script>
+      <!-- //script for tesimonials carousel slider -->
+    <!-- script for tesimonials carousel slider -->
+<script>
+    $(document).ready(function () {
+      $("#owl-demo1").owlCarousel({
+        loop: true,
+        margin: 30,
+        nav: false,
+        responsiveClass: true,
+        responsive: {
+          0: {
+            items: 1,
+            nav: false
+          },
+          768: {
+            items: 2,
+            nav: false
+          },
+          1024: {
+            items: 3,
+            nav: false
+          }
+        }
+      })
+    })
+  </script>
+    <!-- //script for tesimonials carousel slider -->
+
+    <!-- //brands-->
+    <script>
+        $(document).ready(function () {
+            $("#owl-demo").owlCarousel({
+                loop: true,
+                nav: false,
+                autoplay: true,
+                autoplaySpeed: 1500,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 2,
+                        nav: false
+                    },
+                    568: {
+                        items: 3,
+                        nav: false
+                    },
+                    768: {
+                        items: 4,
+                        nav: false
+                    }
+                }
+            })
+        })
+    </script>
+    <!-- //brands-->
+
+    <!-- /typig-text-->
+    <script>
+        const typedTextSpan = document.querySelector(".typed-text");
+        const cursorSpan = document.querySelector(".cursor");
+
+        const textArray = ["Web Designer", "Web Developer", "Photographer", "Freelancer"];
+        const typingDelay = 200;
+        const erasingDelay = 10;
+        const newTextDelay = 100; // Delay between current and next text
+        let textArrayIndex = 0;
+        let charIndex = 0;
+
+        function type() {
+            if (charIndex < textArray[textArrayIndex].length) {
+                if (!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+                typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(type, typingDelay);
+            } else {
+                cursorSpan.classList.remove("typing");
+                setTimeout(erase, newTextDelay);
+            }
+        }
+
+        function erase() {
+            if (charIndex > 0) {
+                // add class 'typing' if there's none
+                if (!cursorSpan.classList.contains("typing")) {
+                    cursorSpan.classList.add("typing");
+                }
+                typedTextSpan.textContent = textArray[textArrayIndex].substring(0, 0);
+                charIndex--;
+                setTimeout(erase, erasingDelay);
+            } else {
+                cursorSpan.classList.remove("typing");
+                textArrayIndex++;
+                if (textArrayIndex >= textArray.length) textArrayIndex = 0;
+                setTimeout(type, typingDelay);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () { // On DOM Load initiate the effect
+            if (textArray.length) setTimeout(type, newTextDelay + 250);
+        });
+    </script>
+    <!-- //typig-text-->
+
+    <!-- jQuery-Photo-filter-lightbox-portfolio-plugin -->
+    <script src="assets/js/jquery-1.7.2.js"></script>
+    <script src="assets/js/jquery.quicksand.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/jquery.prettyPhoto.js"></script>
+    <!-- //jQuery-Photo-filter-lightbox-portfolio-plugin -->
+
+    <!-- MENU-JS -->
+    <script>
+        $(window).on("scroll", function () {
+            var scroll = $(window).scrollTop();
+
+            if (scroll >= 80) {
+                $("#site-header").addClass("nav-fixed");
+            } else {
+                $("#site-header").removeClass("nav-fixed");
+            }
+        });
+
+        //Main navigation Active Class Add Remove
+        $(".navbar-toggler").on("click", function () {
+            $("header").toggleClass("active");
+        });
+        $(document).on("ready", function () {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+            $(window).on("resize", function () {
+                if ($(window).width() > 991) {
+                    $("header").removeClass("active");
+                }
+            });
+        });
+    </script>
+    <!-- //MENU-JS -->
+
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+        $(function () {
+            $('.navbar-toggler').click(function () {
+                $('body').toggleClass('noscroll');
+            })
+        });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+
+    <!--bootstrap-->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <!-- //Js scripts -->
+
+
+</body>
+
+</html>

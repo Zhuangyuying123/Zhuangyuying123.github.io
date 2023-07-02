@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>全屏视频示例</title>
+  <title>粤语视频</title>
   <style>
     body, html {
       margin: 0;
@@ -24,9 +24,9 @@
 </head>
 <body>
   <div id="video-wrapper">
-    <video id="video-player" autoplay controls>
+    <video id="video-player" controls>
       <source src="https://zhuangyuying123.github.io/mp4/%E7%B2%A4%E8%AF%AD.mp4" type="video/mp4">
-      <!-- 添加其他视频格式源（如 WebM 或 Ogg）以提供跨浏览器兼容性 -->
+      <img src="" alt="粤语封面.png" width="100%">
     </video>
   </div>
 
@@ -34,8 +34,8 @@
     var videoWrapper = document.getElementById('video-wrapper');
     var videoPlayer = document.getElementById('video-player');
 
-    // 监听全屏按钮的点击事件
     videoPlayer.addEventListener('click', function() {
+      videoPlayer.play();
       if (videoWrapper.requestFullscreen) {
         videoWrapper.requestFullscreen();
       } else if (videoWrapper.mozRequestFullScreen) {

@@ -113,7 +113,7 @@ btns.forEach((e) => {
           window.location.href="index.html";
           return;
         case"进入主页":
-          window.location.href="nosideblog.html";
+          window.location.href="https://zhuangyuying123.github.io/Teamwork/blog-nosidebar.html";
       default:
         defaultHandlerFunction();
 

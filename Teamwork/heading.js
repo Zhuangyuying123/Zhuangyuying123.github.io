@@ -110,10 +110,10 @@ btns.forEach((e) => {
         );
         break;
         case"进入主页→":
-          window.location.href="index.html";
+          window.location.href="https://zhuangyuying123.github.io/Teamwork/blog-nosidebar.html";
           return;
         case"进入主页":
-          window.location.href="https://zhuangyuying123.github.io/Teamwork/blog-nosidebar.html";
+          window.location.href="index.html";
       default:
         defaultHandlerFunction();
 

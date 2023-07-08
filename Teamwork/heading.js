@@ -79,7 +79,7 @@ btns.forEach((e) => {
         break;
       case "送他去医院":
       case "“好”":
-        changeHandlerFunction("重新游戏", "进入主页", "你破产了");
+        changeHandlerFunction("重新游戏", "进入主页A", "你破产了");
         break;
       case "“你才是边度人”":
       case "“谢谢大家，我很开心”":
@@ -93,26 +93,30 @@ btns.forEach((e) => {
       case "送他去警察局":
       case "查看他的膝盖":
         changeHandlerFunction(
-          "重新游戏",
-          "进入主页",
+          "重新游戏←",
+          "进入主页→",
           "好险，差点就破产了"
         );
         break;
 
       case "“我ok”":
-        changeHandlerFunction("重新游戏", "进入主页", "你大赚一笔");
+        changeHandlerFunction("重新游戏←", "进入主页→", "你大赚一笔");
         break;
       case "“算了吧”":
         changeHandlerFunction(
-          "重新游戏",
-          "进入主页",
+          "重新游戏←",
+          "进入主页→",
           "好险，差点就发财了"
         );
         break;
-        case"进入主页":
+        case"进入主页→":
           window.location.href="index.html";
+          return;
+        case"进入主页":
+          window.location.href="nosideblog.html";
       default:
         defaultHandlerFunction();
+
 
 
     }
@@ -131,8 +135,6 @@ function defaultHandlerFunction() {
 
 let changeHandlerFunction = function (option1, option2, text) {
   p.innerText = text;
-
-
 
   btns[0].innerText = option1;
   btns[1].innerText = option2;

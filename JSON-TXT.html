@@ -76,12 +76,15 @@
     <div class="container">
         <h1>JSON to TXT Converter</h1>
         <input type="file" id="jsonFileInput" accept=".json" />
-        <button onclick="convertToJson()">Convert to TXT</button>
+        <button onclick="convertToTxt()">Convert to TXT</button>
+        <button id="downloadBtn" class="hidden" onclick="downloadTxt()">Download TXT</button>
         <pre id="txtOutput"></pre>
     </div>
 
     <script>
-        function convertToJson() {
+        let convertedTxt = '';
+
+        function convertToTxt() {
             const fileInput = document.getElementById('jsonFileInput');
             const file = fileInput.files[0];
             const reader = new FileReader();
@@ -92,6 +95,8 @@
                     const json = JSON.parse(jsonText);
                     const txt = jsonToTxt(json);
                     document.getElementById('txtOutput').textContent = txt;
+                    convertedTxt = txt;
+                    document.getElementById('downloadBtn').classList.remove('hidden');
                 } catch (error) {
                     console.error('Error converting JSON to TXT:', error);
                 }
@@ -124,6 +129,16 @@
             });
 
             return txt;
+        }
+
+        function downloadTxt() {
+            const blob = new Blob([convertedTxt], { type: 'text/plain' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'converted.txt';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
     </script>
 </body>

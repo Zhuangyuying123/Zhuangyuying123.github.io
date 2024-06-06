@@ -106,64 +106,69 @@
         }
 
         function txtToJson(txt) {
-            const lines = txt.split('\n');
-            const json = { summary: '', characters: [], chapters: [] };
-            let currentSection = '';
-            let currentChapter = null;
+    const lines = txt.split('\n');
+    const json = { summary: '', characters: [], chapters: [] };
+    let currentSection = '';
+    let currentChapter = null;
 
-            for (let i = 0; i < lines.length; i++) {
-                let line = lines[i].trim();
+    for (let i = 0; i < lines.length; i++) {
+        let line = lines[i].trim();
 
-                if (line.startsWith('##')) {
-                    currentSection = line.replace('##', '').trim();
-                } else if (currentSection === '故事梗概') {
-                    json.summary += line + '\n';
-                } else if (currentSection === '人物设定') {
-                    if (line) {
-                        const [name, desc] = line.split('：');
-                        if (name && desc) {
-                            let descLines = [desc.trim()];
-                            while (i + 1 < lines.length && lines[i + 1].trim().startsWith('-')) {
-                                descLines.push(lines[++i].trim());
-                            }
-                            json.characters.push({ name: name.trim(), desc: descLines.join(' ') });
-                        }
+        if (line.startsWith('##')) {
+            currentSection = line.replace('##', '').trim();
+        } else if (currentSection === '故事梗概') {
+            json.summary += line + '\n';
+        } else if (currentSection === '人物设定') {
+            if (line) {
+                const [name, desc] = line.split('：');
+                if (name && desc) {
+                    let descLines = [desc.trim()];
+                    while (i + 1 < lines.length && lines[i + 1].trim().startsWith('-')) {
+                        descLines.push(lines[++i].trim());
                     }
-                } else if (currentSection === '分章摘要') {
-                    if (line.startsWith('章节序号：')) {
-                        if (currentChapter) {
-                            json.chapters.push(currentChapter);
-                        }
-                        currentChapter = { number: 0, event: '', analyse: '', write_style: '', original_content: '' };
-                        currentChapter.number = parseInt(line.replace('章节序号：', '').trim());
-                    } else if (line.startsWith('字数：')) {
-                        currentChapter.number = parseInt(line.replace('字数：', '').trim());
-                    } else if (line.startsWith('事件：')) {
-                        currentChapter.event = line.replace('事件：', '').trim();
-                    } else if (line.startsWith('分析：')) {
-                        let analyseLines = [line.replace('分析：', '').trim()];
-                        while (i + 1 < lines.length && !lines[i + 1].startsWith('写作视角：') && !lines[i + 1].startsWith('章节原文：') && !lines[i + 1].startsWith('章节序号：')) {
-                            analyseLines.push(lines[++i].trim());
-                        }
-                        currentChapter.analyse = analyseLines.join(' ');
-                    } else if (line.startsWith('写作视角：')) {
-                        currentChapter.write_style = line.replace('写作视角：', '').trim();
-                    } else if (line.startsWith('章节原文：')) {
-                        let originalContentLines = [line.replace('章节原文：', '').trim()];
-                        while (i + 1 < lines.length && !lines[i + 1].startsWith('章节序号：')) {
-                            originalContentLines.push(lines[++i].trim());
-                        }
-                        currentChapter.original_content = originalContentLines.join(' ');
-                    }
+                    json.characters.push({ name: name.trim(), desc: descLines.join(' ') });
                 }
             }
-
-            if (currentChapter) {
-                json.chapters.push(currentChapter);
+        } else if (currentSection === '分章摘要') {
+            if (line.startsWith('章节序号：')) {
+                if (currentChapter) {
+                    json.chapters.push(currentChapter);
+                }
+                currentChapter = { number: 0, event: '', analyse: '', write_style: '', original_content: '' };
+                currentChapter.number = parseInt(line.replace('章节序号：', '').trim());
+            } else if (line.startsWith('字数：')) {
+                currentChapter.number = parseInt(line.replace('字数：', '').trim());
+            } else if (line.startsWith('事件：')) {
+                let eventLines = [line.replace('事件：', '').trim()];
+                while (i + 1 < lines.length && !lines[i + 1].startsWith('分析：') && !lines[i + 1].startsWith('写作视角：') && !lines[i + 1].startsWith('章节原文：') && !lines[i + 1].startsWith('章节序号：')) {
+                    eventLines.push(lines[++i].trim());
+                }
+                currentChapter.event = eventLines.join(' ');
+            } else if (line.startsWith('分析：')) {
+                let analyseLines = [line.replace('分析：', '').trim()];
+                while (i + 1 < lines.length && !lines[i + 1].startsWith('写作视角：') && !lines[i + 1].startsWith('章节原文：') && !lines[i + 1].startsWith('章节序号：')) {
+                    analyseLines.push(lines[++i].trim());
+                }
+                currentChapter.analyse = analyseLines.join(' ');
+            } else if (line.startsWith('写作视角：')) {
+                currentChapter.write_style = line.replace('写作视角：', '').trim();
+            } else if (line.startsWith('章节原文：')) {
+                let originalContentLines = [line.replace('章节原文：', '').trim()];
+                while (i + 1 < lines.length && !lines[i + 1].startsWith('章节序号：')) {
+                    originalContentLines.push(lines[++i].trim());
+                }
+                currentChapter.original_content = originalContentLines.join(' ');
             }
-
-            return json;
         }
+    }
+
+    if (currentChapter) {
+        json.chapters.push(currentChapter);
+    }
+
+    return json;
+}
+
 
         function downloadJson() {
             const blob = new Blob([convertedJson], { type: 'application/json' });

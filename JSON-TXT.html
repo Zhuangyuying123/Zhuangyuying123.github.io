@@ -105,25 +105,29 @@
             reader.readAsText(file);
         }
 
+        function removeNewlines(str) {
+            return str.replace(/\n/g, '');
+        }
+
         function jsonToTxt(json) {
             let txt = '##故事梗概\n';
-            txt += json.summary + '\n\n';
+            txt += removeNewlines(json.summary) + '\n\n';
 
             txt += '##人物设定\n';
             json.characters.forEach((character, index) => {
-                txt += `${character.name}：${character.desc}\n`;
+                txt += `${removeNewlines(character.name)}：${removeNewlines(character.desc)}\n`;
             });
             txt += '\n';
 
             txt += '##分章摘要\n';
             json.chapters.forEach((chapter, index) => {
                 txt += `章节序号：${index + 1}\n`;
-                txt += `字数：${chapter.number}\n`; // 使用chapter.number作为字数
-                txt += `事件：${chapter.event}\n`;
-                txt += `分析：${chapter.analyse}\n`;
-                txt += `写作视角：${chapter.write_style}\n`;
+                txt += `字数：${removeNewlines(chapter.number.toString())}\n`; // 使用chapter.number作为字数
+                txt += `事件：${removeNewlines(chapter.event)}\n`;
+                txt += `分析：${removeNewlines(chapter.analyse)}\n`;
+                txt += `写作视角：${removeNewlines(chapter.write_style)}\n`;
                 if (chapter.original_content) {
-                    txt += `章节原文：${chapter.original_content}\n`;
+                    txt += `章节原文：${removeNewlines(chapter.original_content)}\n`;
                 }
                 txt += '\n';
             });

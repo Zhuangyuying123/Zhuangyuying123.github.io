@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TXT to JSON Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 600px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        h1 {
+            font-size: 24px;
+            color: #333;
+            text-align: center;
+        }
+        input[type="file"] {
+            display: block;
+            margin: 20px auto;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            box-sizing: border-box;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #jsonOutput {
+            margin-top: 20px;
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-height: 300px;
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>TXT to JSON Converter</h1>
+        <input type="file" id="txtFileInput" accept=".txt" />
+        <button onclick="convertToJson()">Convert to JSON</button>
+        <button id="downloadBtn" class="hidden" onclick="downloadJson()">Download JSON</button>
+        <pre id="jsonOutput"></pre>
+    </div>
+
+    <script>
+        let convertedJson = '';
+
+        function convertToJson() {
+            const fileInput = document.getElementById('txtFileInput');
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                const txt = e.target.result;
+                try {
+                    const json = txtToJson(txt);
+                    const jsonString = JSON.stringify(json, null, 2);
+                    document.getElementById('jsonOutput').textContent = jsonString;
+                    convertedJson = jsonString;
+                    document.getElementById('downloadBtn').classList.remove('hidden');
+                } catch (error) {
+                    console.error('Error converting TXT to JSON:', error);
+                }
+            };
+
+            reader.readAsText(file);
+        }
+
+        function txtToJson(txt) {
+            const lines = txt.split('\n');
+            const json = {
+                summary: '',
+                characters: [],
+                chapters: []
+            };
+            let section = '';
+
+            lines.forEach(line => {
+                line = line.trim();
+                if (line.startsWith('##')) {
+                    section = line.slice(2).trim();
+                } else if (section === '故事梗概') {
+                    json.summary += line + '\n';
+                } else if (section === '人物设定') {
+                    if (line) {
+                        const [name, desc] = line.split('：');
+                        json.characters.push({ name: name.trim(), desc: desc.trim() });
+                    }
+                } else if (section === '分章摘要') {
+                    if (line.startsWith('章节序号：')) {
+                        json.chapters.push({});
+                        json.chapters[json.chapters.length - 1].number = json.chapters.length;
+                    }
+                    const currentChapter = json.chapters[json.chapters.length - 1];
+                    if (line.startsWith('字数：')) {
+                        currentChapter.number = parseInt(line.split('：')[1].trim());
+                    } else if (line.startsWith('事件：')) {
+                        currentChapter.event = line.split('：')[1].trim();
+                    } else if (line.startsWith('分析：')) {
+                        currentChapter.analyse = line.split('：')[1].trim();
+                    } else if (line.startsWith('写作视角：')) {
+                        currentChapter.write_style = line.split('：')[1].trim();
+                    } else if (line.startsWith('章节原文：')) {
+                        currentChapter.original_content = line.split('：')[1].trim();
+                    }
+                }
+            });
+
+            json.summary = json.summary.trim();
+            return json;
+        }
+
+        function downloadJson() {
+            const blob = new Blob([convertedJson], { type: 'application/json' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'converted.json';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>

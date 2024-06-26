@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Advanced Code Editor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/theme/ambiance.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/theme/eclipse.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/theme/monokai.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/addon/hint/show-hint.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/addon/lint/lint.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/css/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/htmlmixed/htmlmixed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/addon/hint/show-hint.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/addon/lint/lint.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/addon/lint/javascript-lint.min.js"></script>
+    <style>
+        .CodeMirror-foldmarker {
+            color: blue;
+            cursor: pointer;
+        }
+        .CodeMirror-foldgutter-open,
+        .CodeMirror-foldgutter-folded {
+            color: #555;
+        }
+        .CodeMirror-lint-tooltip {
+            background: #ffa;
+            border: 1px solid #e0e0e0;
+            padding: 2px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Advanced Code Editor</h1>
+    <div>
+        <label for="themeSelect">Theme:</label>
+        <select id="themeSelect" onchange="switchTheme(this.value)">
+            <option value="ambiance">Ambiance</option>
+            <option value="eclipse">Eclipse</option>
+            <option value="monokai">Monokai</option>
+        </select>
+
+        <label for="modeSelect">Mode:</label>
+        <select id="modeSelect" onchange="switchMode(this.value)">
+            <option value="python">Python</option>
+            <option value="javascript">JavaScript</option>
+            <option value="css">CSS</option>
+            <option value="htmlmixed">HTML</option>
+        </select>
+    </div>
+    <div id="codeEditor" style="border: 1px solid #ddd; height: 400px;"></div>
+
+    <script>
+        var editor = CodeMirror(document.getElementById("codeEditor"), {
+            mode: "python", // Default mode
+            theme: "ambiance", // Default theme
+            lineNumbers: true,
+            matchBrackets: true,
+            indentUnit: 4,
+            indentWithTabs: true,
+            smartIndent: true,
+            extraKeys: { "Ctrl-Space": "autocomplete" },
+            gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter", "CodeMirror-lint-markers"],
+            foldGutter: true,
+            lint: true, // Enable linting
+            hintOptions: {
+                completeSingle: false
+            },
+            lineNumberFormatter: function(line) {
+                return line % 10 === 0 ? line : "";
+            }
+        });
+
+        // Theme switching function
+        function switchTheme(theme) {
+            editor.setOption("theme", theme);
+        }
+
+        // Mode switching function
+        function switchMode(mode) {
+            editor.setOption("mode", mode);
+        }
+
+        // Auto save function (every 5 seconds)
+        setInterval(function() {
+            var code = editor.getValue();
+            localStorage.setItem('savedCode', code);
+        }, 5000);
+
+        // Load saved code if available
+        window.onload = function() {
+            var savedCode = localStorage.getItem('savedCode');
+            if (savedCode) {
+                editor.setValue(savedCode);
+            }
+        };
+
+        // Add more CodeMirror configuration or event handlers here
+    </script>
+</body>
+</html>

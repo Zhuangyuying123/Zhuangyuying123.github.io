@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Format Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 180px;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            resize: vertical;
+            background-color: #fafafa;
+            box-sizing: border-box;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            margin-top: 10px;
+            cursor: pointer;
+            background-color: #5cb85c;
+            border: none;
+            color: white;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.2s;
+            box-sizing: border-box;
+        }
+
+        button:hover {
+            background-color: #4cae4c;
+            transform: scale(1.05);
+        }
+
+        .copy-btn {
+            background-color: #007bff;
+            margin-top: 10px;
+        }
+
+        .copy-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .output-container {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            background-color: #f9f9f9;
+            min-height: 100px;
+        }
+
+        .alert {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border-radius: 8px;
+            text-align: center;
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+
+            textarea {
+                height: 120px;
+            }
+
+            button {
+                font-size: 16px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Convert Format 1 to Format 2</h1>
+    
+    <div class="container">
+        <textarea id="inputText" placeholder="请在此处粘贴你的细纲"></textarea>
+        <button onclick="convertText()">转换</button>
+
+        <div id="output" class="output-container"></div>
+        
+        <button class="copy-btn" onclick="copyText()">复制结果</button>
+        
+        <div id="copyAlert" class="alert">已复制结果！</div>
+    </div>
+
+    <script>
+        function convertText() {
+            let inputText = document.getElementById("inputText").value;
+
+            // 将章节和段落进行格式化
+            let outputText = inputText
+                .replace(/一、/g, "# 一、")
+                .replace(/二、/g, "# 二、")
+                .replace(/三、/g, "# 三、")
+                .replace(/四、/g, "# 四、")
+                .replace(/五、/g, "# 五、")
+                .replace(/六、/g, "# 六、")
+                .replace(/事件/g, "### 事件")
+                .replace(/字数/g, "### 字数")
+                .replace(/分析/g, "### 分析")
+                .replace(/写作视角/g, "### 写作视角")
+                .replace(/固定章节内容/g, "### 固定章节内容")
+                .replace(/第(\d+)章/g, "## 第$1章")
+                .replace(/# 五、### 固定章节内容/g, "### 五、固定章节内容");
+
+            // 处理角色小传部分
+            outputText = outputText.replace(/# 三、角色小传([\s\S]*?)(?=^# 四、分章摘要)/m, function(match, roleSection) {
+                // 将角色小传部分按行分割
+                let lines = roleSection.trim().split("\n");
+                let formattedLines = [];
+
+                // 遍历每一行，奇数行添加二级标题，偶数行保持不变
+                for (let i = 0; i < lines.length; i++) {
+                    if ((i + 1) % 2 === 1) { // 奇数行
+                        formattedLines.push("## " + lines[i].trim() + "：");
+                    } else { // 偶数行
+                        formattedLines.push(lines[i]);
+                    }
+                }
+
+                return "# 三、角色小传\n" + formattedLines.join("\n") + "\n\n";
+            });
+
+            // 输出结果
+            document.getElementById("output").textContent = outputText;
+        }
+
+        function copyText() {
+            // 获取输出文本框
+            const outputText = document.getElementById("output").textContent;
+            
+            // 创建一个临时文本框，复制文本到其中
+            const tempTextArea = document.createElement("textarea");
+            tempTextArea.value = outputText;
+            document.body.appendChild(tempTextArea);
+            
+            // 选择文本并执行复制操作
+            tempTextArea.select();
+            document.execCommand("copy");
+            
+            // 删除临时文本框
+            document.body.removeChild(tempTextArea);
+            
+            // 提示用户复制成功
+            const alert = document.getElementById("copyAlert");
+            alert.style.display = 'block';
+            setTimeout(() => alert.style.display = 'none', 2000);
+        }
+    </script>
+
+</body>
+</html>
